@@ -8,23 +8,24 @@ function Beverages () {
     const [beverages, setBeverages] = useState([])
 
     useEffect(() => {
-        // //fetch method
-        // const getBeverages = async () => {
-        //     const response = await fetch('http://localhost:8000/api/v1/beverages')
-        //     const data = await response.json()
+        //fetch method
+        const getBeverages = async () => {
+            const response = await fetch('http://localhost:8000/api/v1/beverages')
+            const data = await response.json()
 
-        //     setBeverages(data)
-        //     console.log(data)
-        // }
+            setBeverages(data)
+            console.log(data)
+        }
 
+        getBeverages();
 
-        axios.get(baseURL).then((response) => {
-            setBeverages(response.data)
-        })
+        // axios.get(baseURL).then((response) => {
+        //     setBeverages(response.data)
+        // })
 
-        console.log("beverages:", beverages)
+        // console.log("beverages:", beverages)
 
-        if(!beverages) return null
+        // if(!beverages) return null
         
     },[])
     return (
