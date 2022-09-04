@@ -28,10 +28,12 @@ function Header() {
                         </li>
                     </ul>
                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <form className="d-flex" role="search">
-                            <button className="btn btn-outline-primary" type="button">Login</button>
-                            <button className="btn btn-primary" type="button">Register</button>
-                        </form>
+                            <button className="btn" type="button">
+                                <NavLink to="/login" className="nav-link">Login</NavLink>
+                            </button>
+                            <button className="btn btn-primary" type="button">
+                                <NavLink to="/register" className="nav-link">Register</NavLink>
+                            </button>
                     </div>
                 </div>
             </div>
