@@ -2,10 +2,10 @@ import React from "react";
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-function ListingCard() {
+function BeverageCard() {
     return (
         <></>
     )
 }
 
-export default ListingCard
+export default BeverageCard

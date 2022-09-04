@@ -2,7 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import './App.css';
 
 import Header from './components/partials/Header';
-import Listings from './components/listings/Listings';
+import Beverages from './components/beverages/Beverages';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -12,11 +12,11 @@ function App() {
   return (
     <div className="App">
      <Header />
-     <Listings />
+     <Beverages />
 
      <Routes>
         <Route path="/" />
-        <Route path="/listings" element={<Listings />} />
+        <Route path="/beverages" element={<Beverages />} />
      </Routes>
     </div>
   );
