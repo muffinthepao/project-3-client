@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import {Button } from "react-bootstrap";
 
 import axios from "axios";
 
@@ -22,7 +23,7 @@ function BeverageDetails(props) {
     console.log("beverage: ", beverage);
 
     return (
-        <>
+        <>  
             <h4>Beverage ID: {params.beverageId}</h4>
             <img src={beverage.img} />
             <h1>Name: {beverage.name}</h1>
@@ -31,6 +32,7 @@ function BeverageDetails(props) {
             <p>Spec: {beverage.spec}</p>
             <p>Stock: {beverage.stock}</p>
             <p>Description: {beverage.description}</p>
+            <Button variant="primary">Add to Cart</Button>
 
         </>
     );
