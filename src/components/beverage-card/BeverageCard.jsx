@@ -3,6 +3,9 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
+import ImageComponent from "../image-component/ImageComponent";
+
+
 function BeverageCard(props) {
     //destructurting
     const { _id, name, brandName, price, stock, description, spec, img } = props.data
@@ -11,7 +14,7 @@ function BeverageCard(props) {
         <>  
             <Link to={`/beverages/${_id}`}>
                 <Card style={{ width: "18rem" }}>
-                    <Card.Img variant="top" src={img} />
+                    <Card.Img variant="top" src={ImageComponent(img)} />
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <Card.Text>
