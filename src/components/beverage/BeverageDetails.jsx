@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import {Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 import axios from "axios";
 
@@ -15,6 +15,9 @@ function BeverageDetails(props) {
             .get(`${baseURL}/${params.beverageId}`)
             .then((response) => {
                 setBeverage(response.data);
+            })
+            .catch(function(error) {
+                console.log(error)
             })
         
         // if (!beverage) return null;
