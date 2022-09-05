@@ -10,16 +10,26 @@ const baseURL = "http://localhost:8000/api/v1/beverages";
 
 function BeverageDetails(props) {
     const params = useParams();
-    const [beverage, setBeverage] = useState(null);
+    const [beverage, setBeverage] = useState([]);
 
     useEffect(() => {
-        const fetchBeverage = async () => {
-            const response = await fetch(`${baseURL}/${params.beverageId}`);
-            const data = await response.json();
-            setBeverage(data);
-        };
-        fetchBeverage();
-    }, []);
+        const axiosCall = async () => {
+          const response = await axios.get(`${baseURL}/${params.beverageId}`)
+          setBeverage(response.data)
+        }
+        
+        axiosCall()
+  
+       },[params.beverageId]);
+
+    // useEffect(() => {
+    //     const fetchBeverage = async () => {
+    //         const response = await fetch(`${baseURL}/${params.beverageId}`);
+    //         const data = await response.json();
+    //         setBeverage(data);
+    //     };
+    //     fetchBeverage();
+    // }, []);
 
     // useEffect(() => {
     //     axios
@@ -33,19 +43,6 @@ function BeverageDetails(props) {
 
     //     // if (!beverage) return null;
     // }, []);
-
-    // useEffect(async () => {
-    //    await axios
-    //         .get(`${baseURL}/${params.beverageId}`)
-    //         .then((response) => {
-    //             setBeverage(response.data);
-    //         })
-    //         .catch(function(error) {
-    //             console.log(error)
-    //         })
-
-    //     // if (!beverage) return null;
-    // },[]);
 
     // useEffect(async () => {
     //     const response = await axios.get(`${baseURL}/${params.beverageId}`);
