@@ -4,6 +4,7 @@ import './App.css';
 
 import Header from './components/partials/Header';
 import Beverages from './components/beverages/Beverages';
+import BeverageDetails from './components/beverage/BeverageDetails';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,6 +18,7 @@ function App() {
      <Routes>
         <Route path="/" />
         <Route path="/beverages" element={<Beverages />} />
+        <Route path="/beverages/:beverageId" element={<BeverageDetails />} />
      </Routes>
     </div>
   );

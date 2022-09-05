@@ -1,11 +1,13 @@
-import React, {useEffect, useState} from 'react';
-import BeverageCard from '../beverage-card/BeverageCard';
-import axios from 'axios';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const baseURL = "http://localhost:8000/api/v1/beverages"
+import BeverageCard from "../beverage-card/BeverageCard";
+import Spinner from "react-bootstrap/Spinner";
 
-function Beverages () {
-    const [beverages, setBeverages] = useState([])
+const baseURL = "http://localhost:8000/api/v1/beverages";
+
+function Beverages() {
+    const [beverages, setBeverages] = useState([]);
 
     useEffect(() => {
         // //fetch method
@@ -16,22 +18,30 @@ function Beverages () {
         //     setBeverages(data)
         //     console.log(data)
         // }
-
+        // getBeverages();
 
         axios.get(baseURL).then((response) => {
-            setBeverages(response.data)
-        })
+            setBeverages(response.data);
+        });
 
-        console.log("beverages:", beverages)
+        if (!beverages) return null;
+    }, []);
 
-        if(!beverages) return null
-        
-    },[])
+    const beverageCards = beverages.map((beverage) => (
+        <BeverageCard key={beverage._id} data={beverage} />
+    ));
+
     return (
         <>
-            <BeverageCard />
+            {beverages ? (
+                <>
+                    {beverageCards}
+                </>
+            ) : (
+                <Spinner animation="border" variant="primary" />
+            )}
         </>
-    )
+    );
 }
 
-export default Beverages
+export default Beverages;
