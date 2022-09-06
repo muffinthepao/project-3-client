@@ -9,18 +9,18 @@ import ImageComponent from "../image-component/ImageComponent";
 const baseURL = "http://localhost:8000/api/v1/beverages";
 
 function BeverageDetails(props) {
-    const params = useParams();
+    const {beverageId} = useParams();
     const [beverage, setBeverage] = useState([]);
 
     useEffect(() => {
         const axiosCall = async () => {
-          const response = await axios.get(`${baseURL}/${params.beverageId}`)
+          const response = await axios.get(`${baseURL}/${beverageId}`)
           setBeverage(response.data)
         }
         
         axiosCall()
   
-       },[params.beverageId]);
+       },[beverageId]);
 
     // useEffect(() => {
     //     const fetchBeverage = async () => {
@@ -57,8 +57,8 @@ function BeverageDetails(props) {
     return (
         <>
             <div>
-                <h4>Beverage ID: {params.beverageId}</h4>
-                <img src={ImageComponent(beverage.img)} />
+                <h4>Beverage ID: {beverageId}</h4>
+                <img src={ImageComponent(beverage.img)} alt={beverage.name} />
                 <h1>Name: {beverage.name}</h1>
                 <p>Brand: {beverage.brandName}</p>
                 <p>Price: {beverage.price}</p>
