@@ -3,8 +3,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import Joi from "joi";
+import Joi from "joi"; 
 
+// import validators from "../validators/formValidators"
 import ImageComponent from "../image-component/ImageComponent";
 import RegisterImg from "../register/refreshing_ncum.svg";
 
@@ -17,6 +18,8 @@ const schema = Joi.object({
         "any.only": '"Passwords" must match',
     }),
 });
+
+// const schema = validators.registerValidator
 
 function Register(props) {
     const {
