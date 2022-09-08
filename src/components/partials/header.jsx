@@ -6,6 +6,9 @@
 // import NavDropdown from "react-bootstrap/NavDropdown";
 
 import { NavLink } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' 
+
 
 
 function Header() {
@@ -14,7 +17,8 @@ function Header() {
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
-                <NavLink to="/" className="navbar-brand">Quench</NavLink>
+                
+                <NavLink to="/" className="navbar-brand"><FontAwesomeIcon icon={icon({name: 'mug-saucer', style: 'solid'})} /> Quench</NavLink>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
                 </button>
@@ -27,9 +31,17 @@ function Header() {
                             <NavLink to="/beverages" className="nav-link">Beverages</NavLink>
                         </li>
                     </ul>
+                    
                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                    
+                    <FontAwesomeIcon icon={icon({name: 'shopping-cart', style: 'solid'})} />
+
+
+                
+                        
                             <button className="btn" type="button">
                                 <NavLink to="/login" className="nav-link">Login</NavLink>
+                                
                             </button>
                             <button className="btn btn-primary" type="button">
                                 <NavLink to="/register" className="nav-link">Register</NavLink>
