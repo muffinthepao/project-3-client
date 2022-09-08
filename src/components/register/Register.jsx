@@ -1,72 +1,96 @@
 import React from "react";
 // import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
+
 import ImageComponent from "../image-component/ImageComponent";
 import RegisterImg from "../register/refreshing_ncum.svg";
 
 function Register(props) {
+    const {
+        register,
+        handleSubmit,
+        watch,
+        formState: { errors },
+    } = useForm();
+
+    function onSubmit(data) {
+        console.log("data: ", data);
+    } 
+
+    console.log("errors: ", errors)
+
     return (
         <>
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 border border-primary">
-                        <img src={ImageComponent(RegisterImg)} alt="register" />
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-8 border border-primary">
+                        <img
+                            src={ImageComponent(RegisterImg)}
+                            alt="register.img"
+                        />
                     </div>
-                    <div class="col-sm-4 border border-danger">
-                        <form>
-                            <div class="form-group">
+                    <div className="col-sm-4 border border-danger">
+                        <form onSubmit={handleSubmit(onSubmit)}>
+                            <div className="form-group">
                                 <label for="fullName">Full Name</label>
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     id="fullName"
-                                    name="fullName"
+                                    {...register("fullName", {required: true, minLength: 3})}
                                     placeholder="John Doe"
+                                    default="John Doe"
                                 />
                             </div>
-                            <div class="form-group">
-                                <label for="preferredName">Preferred Name</label>
+                            <div className="form-group">
+                                <label for="preferredName">
+                                    Preferred Name
+                                </label>
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     id="preferredName"
-                                    name="preferredName"
+                                    {...register("preferredName", {required: true, minLength: 3})}
                                     placeholder="John"
+                                    default="John"
                                 />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="email">Email</label>
                                 <input
                                     type="email"
-                                    class="form-control"
+                                    className="form-control"
                                     id="email"
-                                    name="email"
+                                    {...register("email", {required: true})}
                                     placeholder="abc@email.com"
+                                    default="abc@email.com"
                                 />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="password">Password</label>
                                 <input
                                     type="password"
-                                    class="form-control"
+                                    className="form-control"
                                     id="password"
-                                    name="password"
+                                    {...register("password", {required: true, minLength: 3})}
                                     placeholder="********"
+                                    default="123"
                                 />
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="confirmPassword">
                                     Confirm Password
                                 </label>
                                 <input
                                     type="text"
-                                    class="form-control"
+                                    className="form-control"
                                     id="confirmPassword"
-                                    name="confirmPassword"
+                                    {...register("confirmPassword", {required: true, minLength: 3})}
                                     placeholder="********"
                                 />
                             </div>
-                            <button type="submit" class="btn btn-primary">
+                            <button type="submit" className="btn btn-primary">
                                 Register
                             </button>
                         </form>

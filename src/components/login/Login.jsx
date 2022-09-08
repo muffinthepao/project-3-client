@@ -7,23 +7,23 @@ import loginImg from "../login/refreshing_beverage_td3r.svg"
 function Login (props) {
     return (
         <>
-            <div class="container">
-                <div class="row">
-                    <div class="col-8 border border-primary">
-                        <img src={ImageComponent(loginImg)} alt="login"/>
+            <div className="container">
+                <div className="row">
+                    <div className="col-8 border border-primary">
+                        <img src={ImageComponent(loginImg)} alt="login.img"/>
                     </div>
-                    <div class="col-sm-4 border border-danger">
+                    <div className="col-sm-4 border border-danger">
                         <form>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="email" >Email address</label>
-                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="email"/>
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                                <input type="email" className="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="email"/>
+                                <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                             </div>
-                            <div class="form-group">
+                            <div className="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Password"/>
+                                <input type="password" className="form-control" id="password" placeholder="Password"/>
                             </div>
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button type="submit" className="btn btn-primary">Login</button>
                         </form>
                     </div>
                 </div>
