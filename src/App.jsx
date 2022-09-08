@@ -5,6 +5,8 @@ import './App.css';
 import Header from './components/partials/Header';
 import Beverages from './components/beverages/Beverages';
 import BeverageDetails from './components/beverage/BeverageDetails';
+import Login from './components/login/Login';
+import Register from './components/register/Register';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -19,6 +21,8 @@ function App() {
         <Route path="/" />
         <Route path="/beverages" element={<Beverages />} />
         <Route path="/beverages/:beverageId" element={<BeverageDetails />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
      </Routes>
     </div>
   );
