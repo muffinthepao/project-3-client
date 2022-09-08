@@ -2,9 +2,21 @@ import React from "react";
 // import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { joiResolver } from "@hookform/resolvers/joi";
+import Joi from "joi";
 
 import ImageComponent from "../image-component/ImageComponent";
 import RegisterImg from "../register/refreshing_ncum.svg";
+
+const schema = Joi.object({
+    fullName: Joi.string().min(3).max(140).label("Full Name").required(),
+    preferredName: Joi.string().min(3).max(60).label("Preferred Name").required(),
+    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }).label("Email").required(),
+    password: Joi.string().min(3).label("Password").required(),
+    confirmPassword: Joi.any().valid(Joi.ref("password")).required().messages({
+        "any.only": '"Passwords" must match',
+    }),
+});
 
 function Register(props) {
     const {
@@ -12,13 +24,22 @@ function Register(props) {
         handleSubmit,
         watch,
         formState: { errors },
-    } = useForm();
+    } = useForm({
+        resolver: joiResolver(schema),
+        defaultValues: {
+            fullName: "",
+            preferredName: "",
+            email: "",
+            password: "",
+            confirmPassword: "",
+        },
+    });
 
     function onSubmit(data) {
         console.log("data: ", data);
-    } 
+    }
 
-    console.log("errors: ", errors)
+    console.log("errors: ", errors);
 
     return (
         <>
@@ -33,28 +54,26 @@ function Register(props) {
                     <div className="col-sm-4 border border-danger">
                         <form onSubmit={handleSubmit(onSubmit)}>
                             <div className="form-group">
-                                <label for="fullName">Full Name</label>
+                                <label for="fullName" className="d-flex justify-left">Full Name</label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="fullName"
-                                    {...register("fullName", {required: true, minLength: 3})}
+                                    {...register("fullName")}
                                     placeholder="John Doe"
-                                    default="John Doe"
                                 />
+                                <p>{errors.fullName?.message}</p>
                             </div>
                             <div className="form-group">
-                                <label for="preferredName">
-                                    Preferred Name
-                                </label>
+                                <label for="preferredName">Preferred Name</label>
                                 <input
                                     type="text"
                                     className="form-control"
                                     id="preferredName"
-                                    {...register("preferredName", {required: true, minLength: 3})}
+                                    {...register("preferredName")}
                                     placeholder="John"
-                                    default="John"
                                 />
+                                <p>{errors.preferredName?.message}</p>
                             </div>
                             <div className="form-group">
                                 <label for="email">Email</label>
@@ -62,10 +81,10 @@ function Register(props) {
                                     type="email"
                                     className="form-control"
                                     id="email"
-                                    {...register("email", {required: true})}
+                                    {...register("email")}
                                     placeholder="abc@email.com"
-                                    default="abc@email.com"
                                 />
+                                <p>{errors.email?.message}</p>
                             </div>
                             <div className="form-group">
                                 <label for="password">Password</label>
@@ -73,22 +92,22 @@ function Register(props) {
                                     type="password"
                                     className="form-control"
                                     id="password"
-                                    {...register("password", {required: true, minLength: 3})}
+                                    {...register("password")}
                                     placeholder="********"
                                     default="123"
                                 />
+                                <p>{errors.password?.message}</p>
                             </div>
                             <div className="form-group">
-                                <label for="confirmPassword">
-                                    Confirm Password
-                                </label>
+                                <label for="confirmPassword">Confirm Password</label>
                                 <input
-                                    type="text"
+                                    type="password"
                                     className="form-control"
                                     id="confirmPassword"
-                                    {...register("confirmPassword", {required: true, minLength: 3})}
+                                    {...register("confirmPassword")}
                                     placeholder="********"
                                 />
+                                <p>{errors.confirmPassword?.message}</p>
                             </div>
                             <button type="submit" className="btn btn-primary">
                                 Register
