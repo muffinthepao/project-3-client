@@ -1,9 +1,10 @@
 import React from "react";
-// import Button from 'react-bootstrap/Button';
-import { Link } from "react-router-dom";
+import Joi from "joi"; 
+import axios from "axios"
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
-import Joi from "joi"; 
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 // import validators from "../validators/formValidators"
 import styles from '../stylesheets/form.module.scss'
@@ -22,11 +23,14 @@ const schema = Joi.object({
 
 // const schema = validators.registerValidator
 
-function Register(props) {
+ function Register(props) {
+
+
+
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
-        watch,
         formState: { errors },
     } = useForm({
         resolver: joiResolver(schema),
@@ -36,14 +40,37 @@ function Register(props) {
             email: "",
             password: "",
             confirmPassword: "",
+
+            // fullName: "Mervin Tester 2",
+            // preferredName: "Tester 2",
+            // email: "mervin2@gmail.com",
+            // password: "123",
+            // confirmPassword: "123",
         },
     });
 
-    function onSubmit(data) {
-        console.log("data: ", data);
+    async function onSubmit(data) {
+        // console.log("data: ", data);
+
+        
+        try {
+            let response =  await axios.post(`http://localhost:8000/api/v1/users/register`, data)
+
+            if(response.error) {
+                toast.error(response.error)
+                return
+            }
+            
+            toast.success("Registered Successfully")
+
+            navigate("/login")
+        } catch (error) {
+            console.log(error.response)
+            toast.error("Unable to Register. Please try again later.")
+        }
+
     }
 
-    console.log("errors: ", errors);
 
     return (
         <>
@@ -113,8 +140,8 @@ function Register(props) {
                                     />
                                     <p className={styles['form-error-message']}>{errors.confirmPassword?.message}</p>
                                 </div>
-                                <div class="d-grid gap-2">
-                                    <button class="btn btn-primary" type="submit">Register</button>
+                                <div className="d-grid gap-2">
+                                    <button className="btn btn-primary" type="submit">Register</button>
                                 </div>
                             </form>
                         </div>
