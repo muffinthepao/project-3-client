@@ -7,8 +7,9 @@ import ImageComponent from "../image-component/ImageComponent";
 
 function BeverageCard(props) {
     //destructurting
-    const { _id, name, brandName, price, stock, description, spec, img } =
-        props.data;
+    const { _id, name, brandName, price, stock, description, spec, img } = props.data;
+
+    console.log("props.data", props.data)
 
     return (
         <>
@@ -24,22 +25,21 @@ function BeverageCard(props) {
                     </Card>
                 </Link>
             ) : (
-            <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={ImageComponent()} />
-                <Card.Body>
-                    <Placeholder as={Card.Title} animation="glow">
-                        <Placeholder xs={6} />
-                    </Placeholder>
-                    <Placeholder as={Card.Text} animation="glow">
-                        <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
-                        <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
-                        <Placeholder xs={8} />
-                    </Placeholder>
-                    <Placeholder.Button variant="primary" xs={6} />
-                </Card.Body>
-            </Card>
+                <Card style={{ width: "18rem" }}>
+                    <Card.Img variant="top" src={ImageComponent()} />
+                    <Card.Body>
+                        <Placeholder as={Card.Title} animation="glow">
+                            <Placeholder xs={6} />
+                        </Placeholder>
+                        <Placeholder as={Card.Text} animation="glow">
+                            <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
+                            <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
+                            <Placeholder xs={8} />
+                        </Placeholder>
+                        <Placeholder.Button variant="primary" xs={6} />
+                    </Card.Body>
+                </Card>
             )}
-
         </>
     );
 }
