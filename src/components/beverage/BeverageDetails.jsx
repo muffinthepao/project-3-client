@@ -9,6 +9,7 @@ import ImageComponent from "../image-component/ImageComponent";
 const baseURL = "http://localhost:8000/api/v1/beverages";
 
 function BeverageDetails(props) {
+    
     const {beverageId} = useParams();
     const [beverage, setBeverage] = useState([]);
 

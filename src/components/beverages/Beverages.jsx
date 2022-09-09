@@ -31,9 +31,10 @@ function Beverages() {
         <BeverageCard key={beverage._id} data={beverage} />
     ));
 
+    console.log(beverages)
     return (
         <>
-            {beverages ? (
+            {beverages.length !==0 ? (
                 <>
                     {beverageCards}
                 </>
