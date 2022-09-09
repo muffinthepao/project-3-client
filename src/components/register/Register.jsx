@@ -1,6 +1,7 @@
 import React from "react";
 import Joi from "joi"; 
 import axios from "axios"
+
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { toast } from "react-toastify";
@@ -50,8 +51,7 @@ const schema = Joi.object({
     });
 
     async function onSubmit(data) {
-        // console.log("data: ", data);
-
+        console.log("data: ", data);
         
         try {
             let response =  await axios.post(`http://localhost:8000/api/v1/users/register`, data)

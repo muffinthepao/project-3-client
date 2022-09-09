@@ -1,8 +1,11 @@
 import React from "react";
-// import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import { joiResolver } from "@hookform/resolvers/joi";
+import axios from "axios"
 import Joi from "joi";
+// import { Link } from "react-router-dom";
+import { joiResolver } from "@hookform/resolvers/joi";
+import { toast } from "react-toastify";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
 import ImageComponent from "../image-component/ImageComponent";
 import loginImg from "../login/refreshing_beverage_td3r.svg";
@@ -18,6 +21,7 @@ const schema = Joi.object({
 });
 
 function Login(props) {
+    const navigate = useNavigate();
     const {
         register,
         handleSubmit,
@@ -26,13 +30,36 @@ function Login(props) {
     } = useForm({
         resolver: joiResolver(schema),
         defaultValues: {
-            email: "",
-            password: "",
+            // email: "",
+            // password: "",
+
+            email: "mervin1@gmail.com",
+            password: "123"
         },
     });
 
-    function onSubmit(data) {
+    async function onSubmit(data) {
         console.log("data: ", data);
+
+        try {
+            let response =  await axios.post(`http://localhost:8000/api/v1/users/login`, data)
+
+            if(response.error) {
+                toast.error(response.error)
+                return
+            }
+            
+            const token = response.data.token
+
+            toast.success(`Login Successful!`)
+
+            localStorage.setItem("user_token", token)
+
+            navigate("/beverages")
+        } catch (error) {
+            console.log(error.response)
+            toast.error("Unable to Register. Please try again later.")
+        }
     }
 
     console.log("errors: ", errors);
