@@ -16,33 +16,33 @@ function BeverageCard(props) {
         <div class="d-grid gap-3">
             <div class="p-2 bg-light border">
 
-            {props.data ? (
-                <Link to={`/beverages/${_id}`}>
+                {props.data ? (
+                    <Link to={`/beverages/${_id}`}>
+                        <Card style={{ width: "18rem" }}>
+                            <Card.Img variant="top" src={ImageComponent(img)} />
+                            <Card.Body>
+                                <Card.Title>{name}</Card.Title>
+                                <Card.Text>{description}</Card.Text>
+                                <Button variant="primary">View</Button>
+                            </Card.Body>
+                        </Card>
+                    </Link>
+                ) : (
                     <Card style={{ width: "18rem" }}>
-                        <Card.Img variant="top" src={ImageComponent(img)} />
+                        <Card.Img variant="top" src={ImageComponent()} />
                         <Card.Body>
-                            <Card.Title>{name}</Card.Title>
-                            <Card.Text>{description}</Card.Text>
-                            <Button variant="primary">View</Button>
+                            <Placeholder as={Card.Title} animation="glow">
+                                <Placeholder xs={6} />
+                            </Placeholder>
+                            <Placeholder as={Card.Text} animation="glow">
+                                <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
+                                <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
+                                <Placeholder xs={8} />
+                            </Placeholder>
+                            <Placeholder.Button variant="primary" xs={6} />
                         </Card.Body>
                     </Card>
-                </Link>
-            ) : (
-                <Card style={{ width: "18rem" }}>
-                    <Card.Img variant="top" src={ImageComponent()} />
-                    <Card.Body>
-                        <Placeholder as={Card.Title} animation="glow">
-                            <Placeholder xs={6} />
-                        </Placeholder>
-                        <Placeholder as={Card.Text} animation="glow">
-                            <Placeholder xs={7} /> <Placeholder xs={4} />{" "}
-                            <Placeholder xs={4} /> <Placeholder xs={6} />{" "}
-                            <Placeholder xs={8} />
-                        </Placeholder>
-                        <Placeholder.Button variant="primary" xs={6} />
-                    </Card.Body>
-                </Card>
-            )}
+                )}
             </div>
         </div>
         </>
