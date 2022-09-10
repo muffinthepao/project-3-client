@@ -1,12 +1,13 @@
 .form-group {
     margin-bottom: 0.75em;
+    .form-error-message {
+        color: red;
+        display: flex;
+        align-items: left;
+        margin-bottom: 0;
+    }
 }
-.form-error-message {
-    color: red;
-    display: flex;
-    align-items: left;
-    margin-bottom: 0;
-}
+
 
 .form-label {
     display: flex;
