@@ -13,6 +13,9 @@ function BeverageCard(props) {
 
     return (
         <>
+        <div class="d-grid gap-3">
+            <div class="p-2 bg-light border">
+
             {props.data ? (
                 <Link to={`/beverages/${_id}`}>
                     <Card style={{ width: "18rem" }}>
@@ -40,6 +43,8 @@ function BeverageCard(props) {
                     </Card.Body>
                 </Card>
             )}
+            </div>
+        </div>
         </>
     );
 }
