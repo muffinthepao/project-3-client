@@ -35,7 +35,7 @@ function Beverages() {
     console.log(beverages)
     return (
         <div className={styles['card-container']}>
-            <div className='d-flex flex-row justify-content-center'>
+            {/* <div className='d-flex flex-row justify-content-center'> */}
                 {beverages.length !==0 ? (
                     <>
                         { beverageCards }
@@ -43,7 +43,7 @@ function Beverages() {
                 ) : (
                     <Spinner animation="border" variant="primary" />
                 )}
-            </div>
+            {/* </div> */}
         </div>     
     );
 }

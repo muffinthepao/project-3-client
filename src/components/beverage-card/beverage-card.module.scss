@@ -1,31 +1,37 @@
 .card-container {
     text-decoration: none;
     color: black;
-    text-align: left;
+    // text-align: left;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
-  
+
   .img {
     height: 18em;
   }
-// .parent {
-//     display: flex;
-//     flex-wrap: wrap;
-//   }
   
-//   .child {
-//     flex: 1 0 21%; /* explanation below */
-//     margin: 5px;
-//     height: 100px;
-//     background-color: blue;
-//   }
+  .child {
+    flex: 1 0;
+    margin: 20px;
+    height: 650px;  
+  }
 
-// .card-container {
-//   text-decoration: none;
-//   color: black;
-//   text-align: left;
-//   display: flex;
-//   &:hover {
-//     color: red;
-//   }
+.inputOrder {
+    color: rgb(21, 87, 191);
+    background-color: rgb(243, 245, 247);
+    border: 1px solid rgb(234, 234, 234);
+    border-radius: 2px;
+    margin: 0.25rem 0.5rem;
+    padding: 4px;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    width: 3.5rem;
+}
+
+// .addCard {
+//   background-color: red;
 // }
+
