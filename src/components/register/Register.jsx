@@ -13,14 +13,14 @@ import ImageComponent from "../image-component/ImageComponent";
 import RegisterImg from "../register/refreshing_ncum.svg";
 
 const schema = Joi.object({
-    fullName: Joi.string().min(3).max(140).label("Full Name").required(),
-    preferredName: Joi.string().min(3).max(60).label("Preferred Name").required(),
-    email: Joi.string().email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }).label("Email").required(),
-    password: Joi.string().min(3).label("Password").required(),
-    confirmPassword: Joi.any().valid(Joi.ref("password")).required().messages({
-        "any.only": '"Passwords" must match',
-    }),
-});
+    fullName: Joi.string().min(3).max(30).label("Full Name").required(),
+    preferredName: Joi.string().min(3).max(30).label("Preferred Name").required(),
+    email: Joi.string().trim().email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }).label("Email").required(),
+    password: Joi.string().min(4).label("Password").required(),
+    confirmPassword: Joi.string().equal(Joi.ref("password")).required()
+    .label('Confirm password')
+    .messages({ 'any.only': '{{#label}} does not match' })
+})
 
 // const schema = validators.registerValidator
 

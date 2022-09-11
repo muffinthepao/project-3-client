@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function Header() {
     //get user token to show "Profile" rather than "Login/Register"
+    
 
     return (
         <nav className="navbar navbar-expand-lg bg-light">
