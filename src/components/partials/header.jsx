@@ -28,7 +28,7 @@ function Header() {
                     
                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                     <div className="d-flex align-items-center"> 
-                        {/* <FontAwesomeIcon icon={icon({name: 'circle-plus', style: 'solid'})} /> */}
+                        <FontAwesomeIcon icon={icon({name: 'user', style: 'solid', })} />
                         <FontAwesomeIcon icon={icon({name: 'shopping-cart', style: 'solid', })} />
                     </div>
                     
