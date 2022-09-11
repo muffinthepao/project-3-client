@@ -12,13 +12,10 @@ import loginImg from "../login/refreshing_beverage_td3r.svg";
 import styles from '../stylesheets/form.module.scss'
 
 
-const schema = Joi.object({
-    email: Joi.string()
-        .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
-        .label("Email")
-        .required(),
-    password: Joi.string().min(3).label("Password").required(),
-});
+const schema = Joi.object ({
+    email: Joi.string().trim().email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }).label("Email").required(),
+    password: Joi.string().min(4).label("Password").required(),
+})
 
 function Login(props) {
     const navigate = useNavigate();
