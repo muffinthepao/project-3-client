@@ -1,0 +1,31 @@
+.card-container {
+    text-decoration: none;
+    color: black;
+    text-align: left;
+    display: flex;
+  }
+  
+  .img {
+    height: 18em;
+  }
+// .parent {
+//     display: flex;
+//     flex-wrap: wrap;
+//   }
+  
+//   .child {
+//     flex: 1 0 21%; /* explanation below */
+//     margin: 5px;
+//     height: 100px;
+//     background-color: blue;
+//   }
+
+// .card-container {
+//   text-decoration: none;
+//   color: black;
+//   text-align: left;
+//   display: flex;
+//   &:hover {
+//     color: red;
+//   }
+// }

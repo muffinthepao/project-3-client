@@ -4,6 +4,7 @@ import { Card, Button, Placeholder } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import ImageComponent from "../image-component/ImageComponent";
+import styles from './beverage-card.module.scss'
 
 function BeverageCard(props) {
     //destructurting
@@ -13,13 +14,12 @@ function BeverageCard(props) {
 
     return (
         <>
-        <div class="d-grid gap-3">
-            <div class="p-2 bg-light border">
-
+        <div className="d-grid gap-3">
+            <div className="p-2 bg-light border">
                 {props.data ? (
                     <Link to={`/beverages/${_id}`}>
                         <Card style={{ width: "18rem" }}>
-                            <Card.Img variant="top" src={ImageComponent(img)} />
+                            <Card.Img className={styles['img']} variant="top" src={ImageComponent(img)} />
                             <Card.Body>
                                 <Card.Title>{name}</Card.Title>
                                 <Card.Text>{description}</Card.Text>
