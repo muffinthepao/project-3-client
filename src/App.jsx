@@ -5,7 +5,7 @@ import './App.css';
 
 import Beverages from './components/beverages/Beverages';
 import BeverageDetails from './components/beverage/BeverageDetails';
-import Header from './components/partials/Header';
+import Header from './components/partials/header';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 
