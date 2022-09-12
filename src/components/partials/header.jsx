@@ -7,6 +7,7 @@ import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/
 
 function Header() {
     //get user token to show "Profile" rather than "Login/Register"
+    
 
     return (
         <nav className="navbar navbar-expand-lg bg-light">
