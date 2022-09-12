@@ -4,6 +4,7 @@ import { Card, Button, Placeholder } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 import ImageComponent from "../image-component/ImageComponent";
+// import styles from '../stylesheets/beveragecard.module.scss';
 
 function BeverageCard(props) {
     //destructurting
