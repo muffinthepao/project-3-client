@@ -1,5 +1,14 @@
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
 function Logout() {
-    localStorage.removeItem("user_token")
+    const navigate = useNavigate();
+
+    localStorage.removeItem("user_token");
+
+    navigate("/beverages");
+    
+    toast.success("Logout Successful!");
 }
 
-export default Logout
+export default Logout;
