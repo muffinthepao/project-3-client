@@ -11,9 +11,9 @@ import styles from './header.module.scss'
 function Header() {
     //get user token to show "Profile" rather than "Login/Register"
     const token = localStorage.getItem("user_token")
-    
-    const user = jwt_decode(token)
-
+    console.log(token)
+    const user = token? (jwt_decode(token)) : null
+    console.log(user)
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
