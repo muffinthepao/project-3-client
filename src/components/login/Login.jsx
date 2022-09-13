@@ -39,7 +39,7 @@ function Login(props) {
         console.log("data: ", data);
 
         try {
-            let response =  await axios.post(`http://localhost:8000/api/v1/users/login`, data)
+            let response =  await axios.post(`http://localhost:8000/api/v1/users/auth/login`, data)
 
             if(response.error) {
                 toast.error(response.error)
