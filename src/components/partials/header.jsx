@@ -1,19 +1,33 @@
-
-import { NavLink } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro' 
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+import { toast } from "react-toastify"; 
 import jwt_decode from 'jwt-decode'
 
 import styles from './header.module.scss'
-
+import Logout from "../logout/Logout";
 
 
 function Header() {
+
+    const navigate = useNavigate()
+
     //get user token to show "Profile" rather than "Login/Register"
     const token = localStorage.getItem("user_token")
-    console.log(token)
+
     const user = token? (jwt_decode(token)) : null
-    console.log(user)
+
+
+    function Logout() {
+
+        localStorage.removeItem("user_token")
+        navigate('/beverages')
+        toast.success("Logout Successful!")
+        console.log("wow")
+    
+    
+    }
+
     return (
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
@@ -49,10 +63,10 @@ function Header() {
                                         {user.data.email}
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item" href="#">Account</a></li>
-                                        <li><a class="dropdown-item" href="#">History</a></li>
+                                        <li><a class="dropdown-item">Account</a></li>
+                                        <li><a class="dropdown-item">History</a></li>
                                         <li><hr class="dropdown-divider"/></li>
-                                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                                        <li onClick={Logout} class="dropdown-item">Logout</li>
                                     </ul>
                                 </div>
                             </>
