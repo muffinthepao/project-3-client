@@ -54,7 +54,7 @@ const schema = Joi.object({
         console.log("data: ", data);
         
         try {
-            let response =  await axios.post(`http://localhost:8000/api/v1/users/register`, data)
+            let response =  await axios.post(`http://localhost:8000/api/v1/users/auth/register`, data)
 
             if(response.error) {
                 toast.error(response.error)
