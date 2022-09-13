@@ -5,7 +5,8 @@ import './App.css';
 
 import Beverages from './components/beverages/Beverages';
 import BeverageDetails from './components/beverage/BeverageDetails';
-import Header from './components/partials/Header';
+import Cart from './components/cart/Cart';
+import Header from './components/partials/header';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/beverages/:beverageId" element={<BeverageDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
      </Routes>
 
      <ToastContainer />

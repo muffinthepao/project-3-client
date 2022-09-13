@@ -67,7 +67,7 @@ function Login(props) {
                 <div className="row">
 
                     <div className="col-7">
-                        <img  src={ImageComponent(loginImg)} alt="login.img" />
+                        <img src={ImageComponent(loginImg)} alt="login.img" />
                     </div>
 
                     <div className="col-sm-5 rounded-4 border bg-light">
