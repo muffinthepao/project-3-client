@@ -25,6 +25,7 @@ function App() {
         <Route path="/beverages/:beverageId" element={<BeverageDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/cart" element={<Cart />} />
      </Routes>
 
      <ToastContainer />
