@@ -12,7 +12,7 @@ const baseURL = "http://localhost:8000/api/v1/beverages";
 function BeverageDetails(props) {
     
     const {beverageId} = useParams();
-    const [beverage, setBeverage] = useState([]);
+    const [beverage, setBeverage] = useState(null);
 
     useEffect(() => {
         const axiosCall = async () => {
@@ -56,7 +56,7 @@ function BeverageDetails(props) {
 
     console.log("beverage: ", beverage);
 
-    return (
+    return beverage ? (
         <>
             <div className={styles['maincard']}>
                 {/* <h4>Beverage ID: {beverageId}</h4> */}
@@ -66,7 +66,7 @@ function BeverageDetails(props) {
             <div className={styles['seccard']}>
                 <h4>Name: {beverage.name}</h4>
                 <p>Brand: {beverage.brandName}</p>
-                <p>Price: <b>${beverage.price}</b></p>
+                <p>Price: <b>${beverage.price.toFixed(2)}</b></p>
                 <p>Spec: {beverage.spec}</p>
                 <p>Stock: {beverage.stock}</p>
                 <p>Description: {beverage.description}</p>
@@ -80,7 +80,7 @@ function BeverageDetails(props) {
             </div>
             </div>
         </>
-    );
+    ) : null
 }
 
 export default BeverageDetails;
