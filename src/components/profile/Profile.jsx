@@ -7,7 +7,6 @@ import { toast } from "react-toastify"; // pop-up message success/failure ...
 import { useForm } from "react-hook-form"; // handles form input in client
 import { useNavigate } from "react-router-dom";
 
-
 import styles from '../stylesheets/form.module.scss'
 
 
@@ -67,43 +66,101 @@ function Profile(props) {
                 <div className="row">
 
                     <div className="col-2">
-                        {/* <Account tag />
-                        <Saved Listings tag />
-                        <Order History tag /> */}
-                    </div>
-
-                    <div className="col-10">
-                        <div className="p-3">
-                            <h5 className="mb-4 d-flex justify-left">User Details</h5>
-                            <form onSubmit={handleSubmit(onSubmit)}>
-                                <div className={styles["form-group"]}>
-                                    <label className={styles['form-label']} for="fullName">Full Name</label>
-                                    <input
-                                        type="string"
-                                        className="form-control"
-                                        id="fullName"
-                                        // {...userModel("fullName")}
-                                        placeholder="database.fullName"
-                                    />
-                                    <p className={styles['form-error-message']}>{errors.fullName?.message}</p>
-                                </div>
-                                <div className={styles["form-group"]}>
-                                    <label className={styles['form-label']} for="preferredName">Preferred Name</label>
-                                    <input
-                                        type="password"
-                                        className="form-control"
-                                        id="password"
-                                        {...register("password")}
-                                        placeholder="********"
-                                    />
-                                    <p className={styles['form-error-message']}>{errors.password?.message}</p>
-                                </div>
-                                <div className="d-grid gap-2">
-                                    <button className="btn btn-primary" type="submit">Button</button>
-                                </div>
-                            </form>
+                        <div class="d-flex gap-3 flex-column mt-4">
+                        <a href="/profile" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Account</a>
+                        <a href="/savedListings" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Saved Listings</a>
+                        <a href="/orderHistory" class="btn btn-primary btn-dark btn-lg px-4 me-md-2">Order History</a>
                         </div>
                     </div>
+
+                    
+                        <div className="col-4">
+                            <div className="p-3">
+                                <h5 className="mb-4 d-flex justify-left">User Details</h5>
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    <div className={styles["form-group"]}>
+                                        <label className={styles['form-label']} for="fullName">Full Name</label>
+                                        <input
+                                            type="string"
+                                            className="form-control"
+                                            id="fullName"
+                                            // {...userModel("fullName")}
+                                            placeholder="database.fullName"
+                                        />
+                                        <p className={styles['form-error-message']}>{errors.fullName?.message}</p>
+                                    </div>
+                                    <div className={styles["form-group"]}>
+                                        <label className={styles['form-label']} for="preferredName">Preferred Name</label>
+                                        <input
+                                            type="string"
+                                            className="form-control"
+                                            id="preferredName"
+                                            // {...userModel("preferredName")}
+                                            placeholder="database.preferredName"
+                                        />
+                                        <p className={styles['form-error-message']}>{errors.preferredName?.message}</p>
+                                    </div>
+                                    <div className={styles["form-group"]}>
+                                        <label className={styles['form-label']} for="email">Email</label>
+                                        <input
+                                            type="email"
+                                            className="form-control"
+                                            id="email"
+                                            // {...userModel("email")}
+                                            placeholder="database.email"
+                                        />
+                                        <p className={styles['form-error-message']}>{errors.email?.message}</p>
+                                    </div>
+                                    <div className="d-grid gap-2">
+                                        <button className="btn btn-primary" type="submit">Update profile</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                        <div className="col-4">
+                            <div className="p-3">
+                                <h5 className="mb-4 d-flex justify-right">Password</h5>
+                                <form onSubmit={handleSubmit(onSubmit)}>
+                                    <div className={styles["form-group"]}>
+                                        <label className={styles['form-label']} for="currentPassword">Current Password</label>
+                                        <input
+                                            type="string"
+                                            className="form-control"
+                                            id="currentPassword"
+                                            // {...userModel("currentPassword")}
+                                        />
+                                        <p className={styles['form-error-message']}>{errors.currentPassword?.message}</p>
+                                    </div>
+                                    <div className={styles["form-group"]}>
+                                        <label className={styles['form-label']} for="newPassword">New Password</label>
+                                        <input
+                                            type="string"
+                                            className="form-control"
+                                            id="newPassword"
+                                            // {...userModel("newPassword")}
+                                        />
+                                        <p className={styles['form-error-message']}>{errors.newPassword?.message}</p>
+                                    </div>
+                                    <div className={styles["form-group"]}>
+                                        <label className={styles['form-label']} for="confirmNewPassword">Confirm New Password</label>
+                                        <input
+                                            type="string"
+                                            className="form-control"
+                                            id="confirmNewPassword"
+                                            // {...userModel("confirmNewPassword")}
+                                        />
+                                        <p className={styles['form-error-message']}>{errors.confirmNewPassword?.message}</p>
+                                    </div>
+                                    <div className="d-grid gap-2">
+                                        <button className="btn btn-primary" type="submit">Change Password</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    
+
                 </div>
             </div>
         </>

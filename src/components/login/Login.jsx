@@ -30,8 +30,8 @@ function Login(props) {
             // email: "",
             // password: "",
 
-            email: "mervin1@gmail.com",
-            password: "123"
+            email: "nibiew@gmail.com",
+            password: "1010"
         },
     });
 
@@ -97,7 +97,7 @@ function Login(props) {
                                     <p className={styles['form-error-message']}>{errors.password?.message}</p>
                                 </div>
                                 <div className="d-grid gap-2">
-                                    <button className="btn btn-primary" type="submit">Button</button>
+                                    <button className="btn btn-primary" type="submit">Login</button>
                                 </div>
                             </form>
                         </div>
