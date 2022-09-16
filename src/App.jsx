@@ -9,6 +9,7 @@ import Cart from './components/cart/Cart';
 import Header from './components/partials/header';
 import Login from './components/login/Login';
 import Register from './components/register/Register';
+import Profile from './components/profile/Profile';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/beverages/:beverageId" element={<BeverageDetails />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
      </Routes>
 

@@ -63,7 +63,7 @@ function Header() {
                                         {user.data.email}
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><a class="dropdown-item">Account</a></li>
+                                        <li><NavLink to="/profile" class="dropdown-item">Account</NavLink></li>
                                         <li><a class="dropdown-item">History</a></li>
                                         <li><hr class="dropdown-divider"/></li>
                                         <li onClick={Logout} class="dropdown-item">Logout</li>
