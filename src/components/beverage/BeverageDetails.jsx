@@ -69,9 +69,12 @@ function BeverageDetails(props) {
                     <Col>
                         <h4>${beverage.price.toFixed(2)}</h4>
                         <p>{beverage.name}</p>
-                        <p>Brand: {beverage.brandName}</p>
-                        <p>{beverage.spec}</p>
-                        <p>Stock: {beverage.stock}</p>
+                            <div className={styles['brandSpec']}>
+                                <span>{beverage.spec} | </span>
+                                <span>Brand: {beverage.brandName}</span>
+                            </div>
+                            
+                        <p>Stock Available: {beverage.stock}</p>
                         
                         <div className={styles['addCart']}>
                             {/* svg for increse and decrease icon together with input field */}
