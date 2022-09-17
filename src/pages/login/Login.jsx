@@ -7,9 +7,9 @@ import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import ImageComponent from "../image-component/ImageComponent";
-import loginImg from "../login/refreshing_beverage_td3r.svg";
-import styles from '../stylesheets/form.module.scss'
+import ImageComponent from "../../components/image-component/ImageComponent";
+import loginImg from "./refreshing_beverage_td3r.svg";
+import styles from '../../components/stylesheets/form.module.scss'
 
 
 const schema = Joi.object ({
@@ -45,17 +45,19 @@ function Login(props) {
                 toast.error(response.error)
                 return
             }
-            
+            console.log(response)
             const token = response.data.token
+            const userData = response.data.userData
 
             toast.success(`Login Successful!`)
 
             localStorage.setItem("user_token", token)
+            localStorage.setItem("user_data", JSON.stringify(userData))
 
             navigate("/beverages")
         } catch (error) {
             console.log(error.response)
-            toast.error("Unable to Register. Please try again later.")
+            toast.error("Unable to login. Please try again later.")
         }
     }
 

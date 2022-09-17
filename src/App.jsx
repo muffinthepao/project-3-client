@@ -3,13 +3,13 @@ import { ToastContainer } from 'react-toastify';
 import './App.css';
 
 
-import Beverages from './components/beverages/Beverages';
-import BeverageDetails from './components/beverage/BeverageDetails';
-import Cart from './components/cart/Cart';
+import Beverages from './pages/beverages/Beverages';
+import BeverageDetails from './pages/beverage/BeverageDetails';
+import Cart from './pages/cart/Cart';
 import Header from './components/partials/header';
-import Login from './components/login/Login';
-import Register from './components/register/Register';
-import Profile from './components/profile/Profile';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+import Profile from './pages/profile/Profile';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';

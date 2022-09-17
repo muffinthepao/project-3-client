@@ -20,7 +20,7 @@ function Header() {
 
     function Logout() {
 
-        localStorage.removeItem("user_token")
+        localStorage.clear()
         navigate('/beverages')
         toast.success("Logout Successful!")
         console.log("wow")
