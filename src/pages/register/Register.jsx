@@ -1,28 +1,16 @@
 import React from "react";
-import Joi from "joi"; 
 import axios from "axios"
 
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { schema } from './register.validation'
 
-// import validators from "../validators/formValidators"
-import styles from '../stylesheets/form.module.scss'
-import ImageComponent from "../image-component/ImageComponent";
-import RegisterImg from "../register/refreshing_ncum.svg";
+import styles from '../../components/stylesheets/form.module.scss'
+import ImageComponent from "../../components/image-component/ImageComponent";
+import RegisterImg from "./refreshing_ncum.svg";
 
-const schema = Joi.object({
-    fullName: Joi.string().min(3).max(30).label("Full Name").required(),
-    preferredName: Joi.string().min(3).max(30).label("Preferred Name").required(),
-    email: Joi.string().trim().email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }).label("Email").required(),
-    password: Joi.string().min(4).label("Password").required(),
-    confirmPassword: Joi.string().equal(Joi.ref("password")).required()
-    .label('Confirm password')
-    .messages({ 'any.only': '{{#label}} does not match' })
-})
-
-// const schema = validators.registerValidator
 
  function Register(props) {
 

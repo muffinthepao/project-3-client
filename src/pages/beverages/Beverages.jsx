@@ -1,9 +1,9 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-import BeverageCard from "../beverage-card/BeverageCard";
+import BeverageCard from "./beverage-card/BeverageCard";
 import Spinner from "react-bootstrap/Spinner";
-import styles from '.././beverage-card/beverage-card.module.scss'
+import styles from './beverage-card/beverage-card.module.scss'
 
 const baseURL = "http://localhost:8000/api/v1/beverages";
 

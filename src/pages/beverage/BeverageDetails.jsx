@@ -4,7 +4,7 @@ import { Button } from "react-bootstrap";
 
 import axios from "axios";
 
-import ImageComponent from "../image-component/ImageComponent";
+import ImageComponent from "../../components/image-component/ImageComponent";
 
 const baseURL = "http://localhost:8000/api/v1/beverages";
 
