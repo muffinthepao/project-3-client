@@ -49,24 +49,24 @@ function Header() {
                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                     <div className="d-flex align-items-center"> 
                         <NavLink to="/cart">
-                            <button type="button" class="btn btn-light">
+                            <button type="button" className="btn btn-light">
                                 <FontAwesomeIcon className="mx-1 px-1" icon={icon({name: 'shopping-cart', style: 'solid' })} />
-                                <span class="badge text-bg-secondary mx-1">4</span>
+                                <span className="badge text-bg-secondary mx-1">4</span>
                             </button>
                         </NavLink>
                     
                     </div>
                         {token ? (
                             <>
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div className="btn-group">
+                                    <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                         {user.data.email}
                                     </button>
-                                    <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><NavLink to="/profile" class="dropdown-item">Account</NavLink></li>
-                                        <li><a class="dropdown-item">History</a></li>
-                                        <li><hr class="dropdown-divider"/></li>
-                                        <li onClick={Logout} class="dropdown-item">Logout</li>
+                                    <ul className="dropdown-menu dropdown-menu-end">
+                                        <li><NavLink to="/profile" className="dropdown-item">Account</NavLink></li>
+                                        <li><a className="dropdown-item">History</a></li>
+                                        <li><hr className="dropdown-divider"/></li>
+                                        <li onClick={Logout} className="dropdown-item">Logout</li>
                                     </ul>
                                 </div>
                             </>

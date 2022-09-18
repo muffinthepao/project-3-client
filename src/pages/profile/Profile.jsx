@@ -20,6 +20,7 @@ const schema = Joi.object({
 })
 
 const baseURL = "http://localhost:8000/api/v1/profile"
+const userData = JSON.parse(localStorage.getItem("user_data"))
 
 // function Profile(props) {
 //       const {userId} = useParams();
@@ -60,9 +61,9 @@ const baseURL = "http://localhost:8000/api/v1/profile"
     } = useForm({
       resolver: joiResolver(schema),
       defaultValues: {
-        fullName: "database.fullName",
-        preferredName: "database.preferredName",
-        email: "database.email",
+        fullName: `${userData.fullName}`,
+        preferredName: `${userData.preferredName}`,
+        email: `${userData.email}`,
       },
     })
 
@@ -94,6 +95,8 @@ const baseURL = "http://localhost:8000/api/v1/profile"
     }
 
     console.log("errors: ", errors)
+
+    console.log(userData)
 
     return (
       <>
@@ -134,7 +137,7 @@ const baseURL = "http://localhost:8000/api/v1/profile"
                       type="string"
                       className="form-control"
                       id="fullName"
-                      // {...userModel("fullName")}
+                      {...register("fullName")}
                       placeholder="database.fullName"
                     />
                     <p className={styles["form-error-message"]}>
@@ -149,7 +152,7 @@ const baseURL = "http://localhost:8000/api/v1/profile"
                       type="string"
                       className="form-control"
                       id="preferredName"
-                      // {...userModel("preferredName")}
+                      {...register("preferredName")}
                       placeholder="database.preferredName"
                     />
                     <p className={styles["form-error-message"]}>
@@ -164,7 +167,7 @@ const baseURL = "http://localhost:8000/api/v1/profile"
                       type="email"
                       className="form-control"
                       id="email"
-                      // {...userModel("email")}
+                      {...register("email")}
                       placeholder="database.email"
                     />
                     <p className={styles["form-error-message"]}>
