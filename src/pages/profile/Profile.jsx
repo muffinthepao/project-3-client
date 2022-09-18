@@ -7,17 +7,10 @@ import { joiResolver } from "@hookform/resolvers/joi" // front end react validat
 import { toast } from "react-toastify" // pop-up message success/failure ...
 import { useForm } from "react-hook-form" // handles form input in client
 import { useNavigate } from "react-router-dom"
+import { schema } from './profile.validation'
 
 import styles from "../../components/stylesheets/form.module.scss"
 
-const schema = Joi.object({
-  fullName: Joi.string().min(3).max(30).label("Full Name"),
-  preferredName: Joi.string().min(3).max(30).label("Preferred Name"),
-  email: Joi.string()
-    .trim()
-    .email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } })
-    .label("Email"),
-})
 
 const baseURL = "http://localhost:8000/api/v1/profile"
 const userData = JSON.parse(localStorage.getItem("user_data"))

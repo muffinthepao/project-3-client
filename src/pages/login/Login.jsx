@@ -6,16 +6,11 @@ import { joiResolver } from "@hookform/resolvers/joi";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { schema } from './login.validation'
 
 import ImageComponent from "../../components/image-component/ImageComponent";
 import loginImg from "./refreshing_beverage_td3r.svg";
 import styles from '../../components/stylesheets/form.module.scss'
-
-
-const schema = Joi.object ({
-    email: Joi.string().trim().email({ minDomainSegments: 2, tlds: { allow: ["com", "net"] } }).label("Email").required(),
-    password: Joi.string().min(4).label("Password").required(),
-})
 
 function Login(props) {
     const navigate = useNavigate();
