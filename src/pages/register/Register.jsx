@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios"
-
 import { useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { toast } from "react-toastify";
@@ -13,8 +12,6 @@ import RegisterImg from "./refreshing_ncum.svg";
 
 
  function Register(props) {
-
-
 
     const navigate = useNavigate();
     const {
