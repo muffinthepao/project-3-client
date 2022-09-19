@@ -9,7 +9,7 @@ import Cart from './pages/cart/Cart';
 import Header from './components/partials/header';
 import Login from './pages/login/Login';
 import Register from './pages/register/Register';
-import Profile from './pages/profile/Profile';
+import ProfileTest from './pages/profile/ProfileTest';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -27,7 +27,7 @@ function App() {
         <Route path="/beverages/:beverageId" element={<BeverageDetails />} />
         <Route path="/users/auth/login" element={<Login />} />
         <Route path="/users/auth/register" element={<Register />} />
-        <Route path="/users/profile/:userId" element={<Profile />} />
+        <Route path="/users/profile/:userId" element={<ProfileTest />} />
         <Route path="/users/:userId/cart" element={<Cart />} />
      </Routes>
 
