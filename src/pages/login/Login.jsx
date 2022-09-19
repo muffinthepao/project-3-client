@@ -30,8 +30,8 @@ function Login(props) {
             // email: "",
             // password: "",
 
-            email: "nibiew@gmail.com",
-            password: "1010"
+            email: "mervin1@gmail.com",
+            password: "1234"
         },
     });
 

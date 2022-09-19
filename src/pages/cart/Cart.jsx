@@ -7,6 +7,8 @@ import LineItemCard  from "../../components/cart-line-items/CartLineItems";
 
 function Cart(props) {
 
+    const { userId } = JSON.parse(localStorage.getItem("user_data"))
+
     const [isFetching, setFetching] = useState(true)
     const [userCart, setUserCart] = useState({})
     const [cartTotal, setCartTotal] = useState(0.00)
@@ -17,7 +19,7 @@ function Cart(props) {
     
     useEffect(() => {
         //cart with items
-        const userBaseURL = `http://localhost:8000/api/v1/users/6320686a74bb10eedbf498f1/cart`;
+        const userBaseURL = `http://localhost:8000/api/v1/users/${userId}/cart`;
     
         // //empty cart
         // const userBaseURL = `http://localhost:8000/api/v1/users/6320744d7143eaf92da07de2/cart`;
@@ -26,7 +28,7 @@ function Cart(props) {
             try {
                 const response = await axios.get(userBaseURL)
                 setUserCart(response.data)
-                // const sum = response.data.cart.reduce((previousValue, currentValue) => previousValue + currentValue.totalSum, 0)
+
                 const cartSum = response.data.cart.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
                 setCartTotal(cartSum)
 
@@ -43,16 +45,6 @@ function Cart(props) {
        getCart().catch(console.error);
 
     },[]);
-
-    
-
-    // const sumCartTotal = () => {
-
-    //     const sum = userCart.cart.reduce((previousValue, currentValue) => previousValue + currentValue.totalSum, 0)
-    //     console.log("sum when function runs", sum)
-    //     setCartTotal(sum)
-        
-    // }
         
     
     const lineItemCards = () =>  (

@@ -14,8 +14,6 @@ import RegisterImg from "./refreshing_ncum.svg";
 
  function Register(props) {
 
-
-
     const navigate = useNavigate();
     const {
         register,
