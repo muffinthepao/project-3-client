@@ -99,35 +99,3 @@ function BeverageDetails(props) {
 }
 
 export default BeverageDetails;
-
-// import {useState} from "react"
-// import './orderCounter.css'
-
-// function Counter() {
-
-//     let [count, setCount] = useState(0)
-
-//     let incrementCount = function(e) {
-//         setCount(count + 1)
-
-//         console.log(count)
-//     }
-
-//     let decrementCount = e => {
-//         setCount(count-1)
-//     }
-
-//     return (
-//         <>
-//             <span>Current Count: {count}</span>
-//             <section>
-//                 <button onClick={incrementCount}>+</button>
-//                 <button onClick={decrementCount}>-</button>
-//             </section>
-//         </>
-//     )
-// }
-
-// export default Counter
-
-
