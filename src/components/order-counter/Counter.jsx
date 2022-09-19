@@ -1,5 +1,5 @@
 import {useState} from "react"
-import { Card, Button, Placeholder } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 function Counter() {
 
