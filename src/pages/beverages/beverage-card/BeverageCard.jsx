@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import ImageComponent from "../../../components/image-component/ImageComponent";
+import Counter from "../../../components/order-counter/Counter";
 import styles from './beverage-card.module.scss';
 
 function BeverageCard(props) {
@@ -39,12 +40,8 @@ function BeverageCard(props) {
                                     </Card.Body>
                                 </Link>
                                 <Card.Footer className={styles['greycontainer']}>
-                                    <div className={styles['addCart']}>
-                                        {/* svg for increse and decrease icon together with input field */}
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-testid="SvgRemoveFromCart" height="40" width="40"><title></title><g fill="none"><circle cx="20" cy="20" r="20" fill="#0d6efd"></circle><rect width="2" height="16" x="19" y="12" fill="#FFF" rx="1" transform="rotate(90 20 20)"></rect></g></svg>
-                                        <input aria-label="quantity" name="quantity" type="number" autocomplete="off" min="0" value="1" pattern="\d*" className={styles['inputOrder']}></input>
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-testid="SvgAddToCart" height="40" width="40"><title></title><g fill="none"><circle cx="20" cy="20" r="20" fill="#0d6efd"></circle><g fill="#FFF" transform="translate(12 12)"><rect width="2" height="16" x="7" rx="1" transform="rotate(90 8 8)"></rect><rect width="2" height="16" x="7" rx="1"></rect></g></g></svg>
-                                        <Button variant="primary" className="addcartbutton">Add to Cart</Button>
+                                    <div>
+                                        <Counter />
                                     </div>
                                 </Card.Footer>
                             </Card>
