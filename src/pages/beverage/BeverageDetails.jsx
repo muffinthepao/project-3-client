@@ -9,6 +9,7 @@ import styles from './beverage-details.scss';
 import axios from "axios";
 
 import ImageComponent from "../../components/image-component/ImageComponent";
+import Counter from "../../components/order-counter/Counter";
 
 const baseURL = "http://localhost:8000/api/v1/beverages";
 
@@ -70,19 +71,18 @@ function BeverageDetails(props) {
                         <h4 className="price">${beverage.price.toFixed(2)}</h4>
                         <div className="saledetails">
                             <p>{beverage.name}</p>
-                                <div className={styles['brandSpec']}>
+                                <div>
                                     <span>{beverage.spec} | </span>
                                     <span>Brand: {beverage.brandName}</span>
                                 </div>
                             <p>Stock Available: {beverage.stock}</p>
                         </div>
-                        <div>
-                            {/* svg for increse and decrease icon together with input field */}
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-testid="SvgRemoveFromCart" height="40" width="40"><title></title><g fill="none"><circle cx="20" cy="20" r="20" fill="#0d6efd"></circle><rect width="2" height="16" x="19" y="12" fill="#FFF" rx="1" transform="rotate(90 20 20)"></rect></g></svg>
-                            <input aria-label="quantity" name="quantity" type="number" autocomplete="off" min="0" value="1" pattern="\d*" className="inputOrderShow"></input>
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" data-testid="SvgAddToCart" height="40" width="40"><title></title><g fill="none"><circle cx="20" cy="20" r="20" fill="#0d6efd"></circle><g fill="#FFF" transform="translate(12 12)"><rect width="2" height="16" x="7" rx="1" transform="rotate(90 8 8)"></rect><rect width="2" height="16" x="7" rx="1"></rect></g></g></svg>
-                            <Button variant="primary">Add to Cart</Button>
+                        
+                        <div className="counter">
+                            <Counter />
                         </div>
+
+                        
                     </Col>
                 </Row>
                 <Row>
@@ -99,5 +99,35 @@ function BeverageDetails(props) {
 }
 
 export default BeverageDetails;
+
+// import {useState} from "react"
+// import './orderCounter.css'
+
+// function Counter() {
+
+//     let [count, setCount] = useState(0)
+
+//     let incrementCount = function(e) {
+//         setCount(count + 1)
+
+//         console.log(count)
+//     }
+
+//     let decrementCount = e => {
+//         setCount(count-1)
+//     }
+
+//     return (
+//         <>
+//             <span>Current Count: {count}</span>
+//             <section>
+//                 <button onClick={incrementCount}>+</button>
+//                 <button onClick={decrementCount}>-</button>
+//             </section>
+//         </>
+//     )
+// }
+
+// export default Counter
 
 
