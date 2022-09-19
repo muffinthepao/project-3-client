@@ -3,7 +3,7 @@ import React from "react";
 import { Card, Button, Placeholder } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-import ImageComponent from "../image-component/ImageComponent";
+import ImageComponent from "../../../components/image-component/ImageComponent";
 import styles from './beverage-card.module.scss';
 
 function BeverageCard(props) {

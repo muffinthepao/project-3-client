@@ -1,6 +1,12 @@
-import styles from "../stylesheets/cart.module.scss";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {icon } from '@fortawesome/fontawesome-svg-core/import.macro' 
+import styles from "../../components/stylesheets/cart.module.scss";
+
+
+
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+
+
 
 function Cart(props) {
     return (
@@ -29,7 +35,7 @@ function Cart(props) {
                                             <p><strong>VEDAN Sparkling Tea-Lemon Black Tea</strong></p>
                                             <p>Spec: 6 x 500ml</p>
                                             <button type="button" className="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
-                                                <FontAwesomeIcon icon={icon({name: 'trash', style: 'solid', })} />
+                                                <FontAwesomeIcon icon={icon({name: 'trash', style: 'solid'})} />
                                             </button>
                                             <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Move to the wish list">
                                                 <FontAwesomeIcon icon={icon({name: 'heart', style: 'solid', })} />
