@@ -13,6 +13,7 @@ import RegisterImg from "./refreshing_ncum.svg";
 
  function Register(props) {
 
+
     const navigate = useNavigate();
     const {
         register,
@@ -48,7 +49,7 @@ import RegisterImg from "./refreshing_ncum.svg";
             
             toast.success("Registered Successfully")
 
-            navigate("/login")
+            navigate("/users/auth/login")
         } catch (error) {
             console.log(error.response)
             toast.error("Unable to Register. Please try again later.")
