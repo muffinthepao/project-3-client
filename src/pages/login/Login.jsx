@@ -43,7 +43,7 @@ function Login(props) {
             console.log(response)
             const token = response.data.token
             const userData = response.data.userData
-
+            console.log(userData)
             toast.success(`Login Successful!`)
 
             localStorage.setItem("user_token", token)

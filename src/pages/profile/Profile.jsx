@@ -1,57 +1,32 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios" // send data to server
-import Joi from "joi" // import joi library to use joi
-// import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom"
 import { joiResolver } from "@hookform/resolvers/joi" // front end react validation
 import { toast } from "react-toastify" // pop-up message success/failure ...
 import { useForm } from "react-hook-form" // handles form input in client
-import { useNavigate } from "react-router-dom"
+import { useParams, useNavigate, Link } from "react-router-dom"
 import { schema } from './profile.validation'
-
 import styles from "../../components/stylesheets/form.module.scss"
 
 
 const baseURL = "http://localhost:8000/api/v1/profile"
-const userData = JSON.parse(localStorage.getItem("user_data"))
+const userData = JSON.parse(localStorage.getItem("user_data")) 
 
-// function Profile(props) {
-//       const {userId} = useParams();
-//       const [users, setUser] = useState([]);
 
-//       useEffect(() => {
-//           const axiosCall = async () => {
-//             const response = await axios.get(`${baseURL}/${userId}`)
-//             setUser(response.data)
-//           }
+// userdata from local storage
+// set initial useState
+// when you click update profile button,
+//setUserDetails with updated userData
+//run axios call to update in mongo.
+//update user_data in local storage with updated info
 
-//           axiosCall()
-
-//          },[userId]);
-
-//          console.log("users: ", users);
-
-//       return (
-//           <>
-//               <div>
-//                   <h4>User ID: {userId}</h4>
-
-//                   <h5>Full Name: {users.fullName}</h5>
-//                   <h5>Preferred Name: {users.PreferredName}</h5>
-//                   <h5>Email: {users.email}</h5>
-
-//               </div>
-//           </>
-//       )
-//   }
   function Profile(props) {
     const navigate = useNavigate()
-    const {
-      register,
-      handleSubmit,
-      // watch,
-      formState: { errors },
-    } = useForm({
+    const params = useParams()
+// useParams is the react version of req.params in express.js
+//in express -> req.params.userId
+//in react -> const {userId} = useParams();
+
+    const {register, handleSubmit, formState: { errors }} = useForm({
       resolver: joiResolver(schema),
       defaultValues: {
         fullName: `${userData.fullName}`,
@@ -59,13 +34,13 @@ const userData = JSON.parse(localStorage.getItem("user_data"))
         email: `${userData.email}`,
       },
     })
-
-    async function onSubmit(data) {
-      console.log("data: ", data)
+    // const [userDetails, setUserDetails] = useState(userData)
+     function onSubmit(data) {
 
       try {
-        let response = await axios.post(
-          `http://localhost:8000/api/v1/users/profile`,
+        
+        let response = axios.put(
+          `http://localhost:8000/api/v1/users/profile/${userData.userId}/editProfile`,
           data
         )
 
@@ -74,22 +49,20 @@ const userData = JSON.parse(localStorage.getItem("user_data"))
           return
         }
 
-        const token = response.data.token
-
         toast.success(`Profile update Successful!`)
 
-        localStorage.setItem("user_token", token)
-
-        navigate("/")
+        // navigate("/profile")
+        window.location.reload()
       } catch (error) {
+        
+        console.log(userData)
+        console.log(data)
+        
         console.log(error.response)
         toast.error("Unable to update profile. Please try again later.")
       }
     }
 
-    console.log("errors: ", errors)
-
-    console.log(userData)
 
     return (
       <>
@@ -121,7 +94,9 @@ const userData = JSON.parse(localStorage.getItem("user_data"))
             <div className="col-4">
               <div className="p-3">
                 <h5 className="mb-4 d-flex justify-left">User Details</h5>
+
                 <form onSubmit={handleSubmit(onSubmit)}>
+
                   <div className={styles["form-group"]}>
                     <label className={styles["form-label"]} for="fullName">
                       Full Name
@@ -131,12 +106,12 @@ const userData = JSON.parse(localStorage.getItem("user_data"))
                       className="form-control"
                       id="fullName"
                       {...register("fullName")}
-                      placeholder="database.fullName"
                     />
                     <p className={styles["form-error-message"]}>
                       {errors.fullName?.message}
                     </p>
                   </div>
+
                   <div className={styles["form-group"]}>
                     <label className={styles["form-label"]} for="preferredName">
                       Preferred Name
@@ -146,12 +121,12 @@ const userData = JSON.parse(localStorage.getItem("user_data"))
                       className="form-control"
                       id="preferredName"
                       {...register("preferredName")}
-                      placeholder="database.preferredName"
                     />
                     <p className={styles["form-error-message"]}>
                       {errors.preferredName?.message}
                     </p>
                   </div>
+
                   <div className={styles["form-group"]}>
                     <label className={styles["form-label"]} for="email">
                       Email
@@ -161,18 +136,20 @@ const userData = JSON.parse(localStorage.getItem("user_data"))
                       className="form-control"
                       id="email"
                       {...register("email")}
-                      placeholder="database.email"
                     />
                     <p className={styles["form-error-message"]}>
                       {errors.email?.message}
                     </p>
                   </div>
+
                   <div className="d-grid gap-2">
                     <button className="btn btn-primary" type="submit">
                       Update profile
                     </button>
                   </div>
+
                 </form>
+
               </div>
             </div>
 
