@@ -1,22 +1,21 @@
 import {useState} from "react"
 import { Card, Button, Placeholder } from "react-bootstrap";
 
-
-
-export default Counter
-
 function Counter() {
 
     let [count, setCount] = useState(1)
 
     let incrementCount = function(e) {
         setCount(count + 1)
-
         console.log(count)  
     }
 
     let decrementCount = e => {
-        setCount(count-1)
+        if(count === 0) {
+            count = 0
+        } else {
+            setCount(count-1)
+        } 
     }
 
     return (
@@ -29,3 +28,5 @@ function Counter() {
         </>
     )
 }
+
+export default Counter
