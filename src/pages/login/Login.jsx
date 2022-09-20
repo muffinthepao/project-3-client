@@ -25,8 +25,8 @@ function Login(props) {
             // email: "",
             // password: "",
 
-            email: "nibiew@gmail.com",
-            password: "1010"
+            email: "drink@gmail.com",
+            password: "1111"
         },
     });
 
