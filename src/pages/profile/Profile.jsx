@@ -15,9 +15,9 @@ const userData = JSON.parse(localStorage.getItem("user_data"))
     const {register, handleSubmit, formState: { errors }} = useForm({
       resolver: joiResolver(schema),
       defaultValues: {
-        fullName: `${userData.fullName}`,
-        preferredName: `${userData.preferredName}`,
-        email: `${userData.email}`,
+        fullName: `${userData?.fullName}`,
+        preferredName: `${userData?.preferredName}`,
+        email: `${userData?.email}`,
       },
     })
 

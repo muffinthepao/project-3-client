@@ -1,163 +1,83 @@
-import styles from "../../components/stylesheets/cart.module.scss";
+import axios from "axios";
+import React, { useEffect, useState} from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+
+import emptyCartImage from "../cart/empty-cart.png";
+import LineItemCard  from "../../components/cart-line-items/CartLineItems";
 
 function Cart(props) {
+
+    const { userId } = JSON.parse(localStorage.getItem("user_data"))
+
+    const [isFetching, setFetching] = useState(true)
+    const [userCart, setUserCart] = useState({})
+    const [cartTotal, setCartTotal] = useState(0.00)
+    const [itemsTotal, setItemsTotal] = useState(0)
+
+   
+
+    
+    useEffect(() => {
+        //cart with items
+        const userBaseURL = `http://localhost:8000/api/v1/users/${userId}/cart`;
+    
+        // //empty cart
+        // const userBaseURL = `http://localhost:8000/api/v1/users/6320744d7143eaf92da07de2/cart`;
+        const getCart = async () => {
+    
+            try {
+                const response = await axios.get(userBaseURL)
+                setUserCart(response.data)
+                console.log("response.data: ", response.data)
+
+
+                const cartSum = response.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
+                setCartTotal(cartSum)
+
+                const totalItemsInCart = response.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
+                setItemsTotal(totalItemsInCart)
+                setFetching(false)
+    
+            } catch (error) {
+                console.log(error)
+                return
+            }
+        }
+
+       getCart().catch(console.error);
+
+    },[]);
+        
+    
+    const lineItemCards = () =>  (
+        userCart.lineItems.map((lineItem) => <LineItemCard key={lineItem._id} lineItem={lineItem} />
+        // userCart.lineItems.map((lineItem) => <LineItemCard key={lineItem._id}  />
+    ))
+    
     return (
         <>
+            
             <section className="">
                 <div className="container py-5">
                     <div className="row d-flex justify-content-center my-4">
                         <div className="col-md-8">
                             <div className="card mb-4">
                                 <div className="card-header py-3">
-                                    <h5 className="mb-0">Cart - xxx items</h5>
+                                    <h5 className="mb-0">Cart - {itemsTotal} item(s)</h5>
                                 </div>
 
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                                            <div className="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                                            <img src="https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/90126474_XL1_20220323.jpg" className="w-100" alt="Blue Jeans Jacket" />
-                                            <a href="#!">
-                                                <div className="mask"></div>
-                                            </a>
-                                            </div>
-                                        </div>
-
-                                        <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                                            <p><strong>VEDAN Sparkling Tea-Lemon Black Tea</strong></p>
-                                            <p>Spec: 6 x 500ml</p>
-                                            <button type="button" className="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
-                                                <FontAwesomeIcon icon={icon({name: 'trash', style: 'solid'})} />
-                                            </button>
-                                            <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Move to the wish list">
-                                                <FontAwesomeIcon icon={icon({name: 'heart', style: 'solid', })} />
-                                            </button>
-                                        </div>
-
-                                        <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                                            <div className="d-flex mb-4">
-                                            <button className="btn btn-primary px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <FontAwesomeIcon icon={icon({name: 'minus', style: 'solid', })} />
-                                            </button>
-
-                                            <div className="form-outline">
-                                                <input id="form1" min="0" name="quantity" value="1" type="number" className="form-control" />
-                                                <label className="form-label" for="form1">Quantity</label>
-                                            </div>
-
-                                            <button className="btn btn-primary px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <FontAwesomeIcon icon={icon({name: 'plus', style: 'solid', })} />
-                                            </button>
-                                            </div>
-
-                                            <p className="text-start text-md-center">
-                                                <strong>$17.99</strong>
-                                            </p>
-                                            
-                                        </div>
+                                {!isFetching ? (
+                                    <>
+                                        {lineItemCards()}
+                                    </>
+                                ) : (
+                                    <>
+                                    <div>
+                                        <img src={emptyCartImage} alt="empty-cart"/>
                                     </div>
-
-                                    <hr className="my-4" />
-                                </div>
-
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                                            <div className="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                                            <img src="https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/90126474_XL1_20220323.jpg" className="w-100" alt="Blue Jeans Jacket" />
-                                            <a href="#!">
-                                                <div className="mask"></div>
-                                            </a>
-                                            </div>
-                                        </div>
-
-                                        <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                                            <p><strong>VEDAN Sparkling Tea-Lemon Black Tea</strong></p>
-                                            <p>Spec: 6 x 500ml</p>
-                                            <button type="button" className="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
-                                                <FontAwesomeIcon icon={icon({name: 'trash', style: 'solid', })} />
-                                            </button>
-                                            <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Move to the wish list">
-                                                <FontAwesomeIcon icon={icon({name: 'heart', style: 'solid', })} />
-                                            </button>
-                                        </div>
-
-                                        <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                                            <div className="d-flex mb-4">
-                                            <button className="btn btn-primary px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <FontAwesomeIcon icon={icon({name: 'minus', style: 'solid', })} />
-                                            </button>
-
-                                            <div className="form-outline">
-                                                <input id="form1" min="0" name="quantity" value="1" type="number" className="form-control" />
-                                                <label className="form-label" for="form1">Quantity</label>
-                                            </div>
-
-                                            <button className="btn btn-primary px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <FontAwesomeIcon icon={icon({name: 'plus', style: 'solid', })} />
-                                            </button>
-                                            </div>
-
-                                            <p className="text-start text-md-center">
-                                                <strong>$17.99</strong>
-                                            </p>
-                                            
-                                        </div>
-                                    </div>
-
-                                    <hr className="my-4" />
-                                </div>
-
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-lg-3 col-md-12 mb-4 mb-lg-0">
-                                            <div className="bg-image hover-overlay hover-zoom ripple rounded" data-mdb-ripple-color="light">
-                                            <img src="https://media.nedigital.sg/fairprice/fpol/media/images/product/XL/90126474_XL1_20220323.jpg" className="w-100" alt="Blue Jeans Jacket" />
-                                            <a href="#!">
-                                                <div className="mask"></div>
-                                            </a>
-                                            </div>
-                                        </div>
-
-                                        <div className="col-lg-5 col-md-6 mb-4 mb-lg-0">
-                                            <p><strong>VEDAN Sparkling Tea-Lemon Black Tea</strong></p>
-                                            <p>Spec: 6 x 500ml</p>
-                                            <button type="button" className="btn btn-primary btn-sm me-1 mb-2" data-mdb-toggle="tooltip" title="Remove item">
-                                                <FontAwesomeIcon icon={icon({name: 'trash', style: 'solid', })} />
-                                            </button>
-                                            <button type="button" className="btn btn-danger btn-sm mb-2" data-mdb-toggle="tooltip" title="Move to the wish list">
-                                                <FontAwesomeIcon icon={icon({name: 'heart', style: 'solid', })} />
-                                            </button>
-                                        </div>
-
-                                        <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                                            <div className="d-flex mb-4">
-                                            <button className="btn btn-primary px-3 me-2" onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                <FontAwesomeIcon icon={icon({name: 'minus', style: 'solid', })} />
-                                            </button>
-
-                                            <div className="form-outline">
-                                                <input id="form1" min="0" name="quantity" value="1" type="number" className="form-control" />
-                                                <label className="form-label" for="form1">Quantity</label>
-                                            </div>
-
-                                            <button className="btn btn-primary px-3 ms-2" onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                <FontAwesomeIcon icon={icon({name: 'plus', style: 'solid', })} />
-                                            </button>
-                                            </div>
-
-                                            <p className="text-start text-md-center">
-                                                <strong>$17.99</strong>
-                                            </p>
-                                            
-                                        </div>
-                                    </div>
-
-                                    <hr className="my-4" />
-                                </div>
+                                    </>
+                                    
+                                )}
                             </div>
                         </div>
                         <div className="col-md-4">
@@ -169,7 +89,7 @@ function Cart(props) {
                                     <ul className="list-group list-group-flush">
                                         <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                             Products
-                                            <span>$53.98</span>
+                                            <span>{cartTotal.toFixed(2)}</span>
                                         </li>
 
                                         <li className="list-group-item d-flex justify-content-between align-items-center px-0">
@@ -182,7 +102,7 @@ function Cart(props) {
                                                 <strong>Total amount</strong>
                                                 <strong><p className="mb-0">(including GST)</p></strong>
                                             </div>
-                                            <span><strong>$53.98</strong></span>
+                                            <span><strong>{cartTotal.toFixed(2)}</strong></span>
                                         </li>
                                     </ul>
 
