@@ -1,12 +1,7 @@
 import styles from "../../components/stylesheets/cart.module.scss";
 
-
-
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
-
-
 
 function Cart(props) {
     return (
