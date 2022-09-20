@@ -52,7 +52,7 @@ function LineItemCard(prop) {
                     </Link>
                     <button
                         type="button"
-                        className="btn btn-primary btn-sm me-1 mb-2"
+                        className="btn btn-outline-primary btn-sm me-1 mb-2"
                         data-mdb-toggle="tooltip"
                         title="Remove item"
                     >
@@ -62,12 +62,12 @@ function LineItemCard(prop) {
                     </button>
                     <button
                         type="button"
-                        className="btn btn-danger btn-sm mb-2"
+                        className="btn btn-outline-danger btn-sm mb-2"
                         data-mdb-toggle="tooltip"
                         title="Move to the wish list"
                     >
                         <FontAwesomeIcon
-                            icon={icon({ name: "heart", style: "solid" })}
+                            icon={icon({ name: "heart", style: "regular" })}
                         />
                     </button>
                 </div>
