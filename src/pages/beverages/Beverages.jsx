@@ -7,7 +7,7 @@ import styles from './beverage-card/beverage-card.module.scss'
 
 const baseURL = "http://localhost:8000/api/v1/beverages";
 
-function Beverages() {
+function Beverages({lineItems}) {
     const [beverages, setBeverages] = useState([]);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ function Beverages() {
     }, []);
 
     const beverageCards = beverages.map((beverage) => (
-        <BeverageCard key={beverage._id} data={beverage} />
+        <BeverageCard key={beverage._id} data={beverage} lineItems={lineItems} />
     ));
 
     console.log(beverages)
