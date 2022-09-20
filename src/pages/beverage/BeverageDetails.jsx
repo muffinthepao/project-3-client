@@ -1,17 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import styles from './beverage-details.scss';
 
 import axios from "axios";
 
 import ImageComponent from "../../components/image-component/ImageComponent";
+import Counter from "../../components/order-counter/Counter";
 
 const baseURL = "http://localhost:8000/api/v1/beverages";
 
 function BeverageDetails(props) {
     
     const {beverageId} = useParams();
-    const [beverage, setBeverage] = useState([]);
+    const [beverage, setBeverage] = useState(null);
 
     useEffect(() => {
         const axiosCall = async () => {
@@ -55,21 +60,42 @@ function BeverageDetails(props) {
 
     console.log("beverage: ", beverage);
 
-    return (
+    return beverage ? (
         <>
-            <div>
-                <h4>Beverage ID: {beverageId}</h4>
-                <img src={ImageComponent(beverage.img)} alt={beverage.name} />
-                <h1>Name: {beverage.name}</h1>
-                <p>Brand: {beverage.brandName}</p>
-                <p>Price: {beverage.price}</p>
-                <p>Spec: {beverage.spec}</p>
-                <p>Stock: {beverage.stock}</p>
-                <p>Description: {beverage.description}</p>
-                <Button variant="primary">Add to Cart</Button>
-            </div>
+            <Container>
+                <Row>
+                    <Col>
+                        <img src={ImageComponent(beverage.img)} alt={beverage.name} className="showImage" />
+                    </Col>
+                    <Col>
+                        <h4 className="price">${beverage.price.toFixed(2)}</h4>
+                        <div className="saledetails">
+                            <p>{beverage.name}</p>
+                                <div>
+                                    <span>{beverage.spec} | </span>
+                                    <span>Brand: {beverage.brandName}</span>
+                                </div>
+                            <p>Stock Available: {beverage.stock}</p>
+                        </div>
+                        
+                        <div className="counter">
+                            <Counter />
+                        </div>
+
+                        
+                    </Col>
+                </Row>
+                <Row>
+                    <Col>
+                        <h3 className="description">Description</h3>
+                        <p className="details">{beverage.description}</p>
+                    </Col>
+                    <Col>
+                    </Col>
+                </Row>
+            </Container>
         </>
-    );
+    ) : null
 }
 
 export default BeverageDetails;
