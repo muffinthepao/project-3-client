@@ -1,0 +1,79 @@
+.showImage {
+    float: left;
+    width: 344px;
+    height: 344px;
+}
+
+.row {
+    text-align: left;
+    
+}
+
+.col {
+    padding-top: 25px;
+}
+
+.description {
+    font-family: Lato, sans-serif;
+    font-weight: 900;
+    color: rgb(13, 53, 120);
+    font-size: 1rem;
+    line-height: 1rem;
+}
+
+.details {
+    font-family: Lato, sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+}
+
+.price {
+    font-family: Lato, sans-serif;
+    font-weight: 900;
+    font-size: 18px;
+}
+
+.saledetails {
+    font-family: Lato, sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.5rem;
+}
+// .brandSpec {
+//     display: flex;
+//     font-size: 0.75rem;
+//     line-height: 1rem;
+//     margin: 10px;
+//     padding: 10px;
+// }
+
+.inputOrderShow {
+    color: rgb(21, 87, 191);
+    background-color: white;
+    border: 1px solid rgb(234, 234, 234);
+    border-radius: 2px;
+    margin: 0.25rem 0.5rem;
+    padding: 4px;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    width: 3.5rem;
+}
+
+.button {
+    border-width: 0;
+    background-color: white;
+}
+
+// .maincard {
+//     display: flex;
+//     flex-direction: row
+// }
+
+// .seccard {   
+//     width: auto;
+//     display: inline-block;  
+// }
+

@@ -7,7 +7,7 @@
     justify-content: center; 
 }
 
-.img {
+.image {
     height: 18em;
 }
   
@@ -47,8 +47,18 @@
 .greycontainer {
   position: absolute;
   bottom: 0px;
+  background-color: white;
 }
 
 // .addcartbutton {
 //   background-color: red;
 // }
+
+.priceheart {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    height: 1.5rem;
+}
