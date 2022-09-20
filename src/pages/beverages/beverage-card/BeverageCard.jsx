@@ -13,7 +13,6 @@ function BeverageCard({data, lineItems}) {
     const { _id, name, brandName, price, stock, description, spec, img } = data;
 
     const userData = JSON.parse(localStorage.getItem("user_data")) 
-    const baseBeveragesURL = "http://localhost:8000/api/v1/beverages";
     const baseUsersURL = `http://localhost:8000/api/v1/users/${userData.userId}`;
 
     const addToCart = () => {
