@@ -28,58 +28,37 @@ function BeverageDetails(props) {
   
        },[beverageId]);
 
-    // useEffect(() => {
-    //     const fetchBeverage = async () => {
-    //         const response = await fetch(`${baseURL}/${params.beverageId}`);
-    //         const data = await response.json();
-    //         setBeverage(data);
-    //     };
-    //     fetchBeverage();
-    // }, []);
-
-    // useEffect(() => {
-    //     axios
-    //         .get(`${baseURL}/${params.beverageId}`)
-    //         .then((response) => {
-    //             setBeverage(response.data);
-    //         })
-    //         .catch(function (error) {
-    //             console.log(error);
-    //         });
-
-    //     // if (!beverage) return null;
-    // }, []);
-
-    // useEffect(async () => {
-    //     const response = await axios.get(`${baseURL}/${params.beverageId}`);
-
-    //     setBeverage(response.data)
-
-    //     // if (!beverage) return null;
-    // },[]);
-
     console.log("beverage: ", beverage);
 
     return beverage ? (
         <>
             <Container>
-                <Row>
-                    <Col>
+                <Row className="mt-5">
+                    <Col xs={5}>
                         <img src={ImageComponent(beverage.img)} alt={beverage.name} className="showImage" />
                     </Col>
-                    <Col>
-                        <h4 className="price">${beverage.price.toFixed(2)}</h4>
+                    <Col xs={7}>
+                        <h4 className="price"><strong>${beverage.price.toFixed(2)}</strong></h4>
                         <div className="saledetails">
-                            <p>{beverage.name}</p>
+                            <h3>{beverage.name}</h3>
+
                                 <div>
                                     <span>{beverage.spec} | </span>
                                     <span>Brand: {beverage.brandName}</span>
                                 </div>
+
                             <p>Stock Available: {beverage.stock}</p>
                         </div>
                         
-                        <div className="counter">
+                        <div className="counter mt-5">
                             <Counter />
+                        </div>
+
+                        <div className="mt-5">
+
+                            <h3 className="description">Description</h3>
+                            <p className="details">{beverage.description}</p>
+
                         </div>
 
                         
@@ -87,8 +66,7 @@ function BeverageDetails(props) {
                 </Row>
                 <Row>
                     <Col>
-                        <h3 className="description">Description</h3>
-                        <p className="details">{beverage.description}</p>
+
                     </Col>
                     <Col>
                     </Col>
