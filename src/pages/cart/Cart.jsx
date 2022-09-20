@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import axios from "axios";
 import React, { useEffect, useState} from "react";
 
@@ -5,6 +6,13 @@ import React, { useEffect, useState} from "react";
 import emptyCartImage from "../cart/empty-cart.png";
 import LineItemCard  from "../../components/cart-line-items/CartLineItems";
 
+=======
+import styles from "../../components/stylesheets/cart.module.scss";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
+
+>>>>>>> e368a42fea49f5b3513bb660af68a6f5886baac8
 function Cart(props) {
 
     const { userId } = JSON.parse(localStorage.getItem("user_data"))
