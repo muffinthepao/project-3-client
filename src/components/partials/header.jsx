@@ -14,6 +14,7 @@ function Header() {
 
     //get user token to show "Profile" rather than "Login/Register"
     const token = localStorage.getItem("user_token")
+    const userData = JSON.parse(localStorage.getItem("user_data")) 
 
     const user = token? (jwt_decode(token)) : null
 
@@ -48,7 +49,7 @@ function Header() {
                     
                     <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                     <div className="d-flex align-items-center"> 
-                        <NavLink to="/cart">
+                        <NavLink to={`/users/${userData?.userId}/cart`}>
                             <button type="button" className="btn btn-light">
                                 <FontAwesomeIcon className="mx-1 px-1" icon={icon({name: 'shopping-cart', style: 'solid' })} />
                                 <span className="badge text-bg-secondary mx-1">4</span>
@@ -63,7 +64,7 @@ function Header() {
                                         {user.data.email}
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-end">
-                                        <li><NavLink to="/profile" className="dropdown-item">Account</NavLink></li>
+                                        <li><NavLink to={`/users/profile/${userData?.userId}`} className="dropdown-item">Account</NavLink></li>
                                         <li><a className="dropdown-item">History</a></li>
                                         <li><hr className="dropdown-divider"/></li>
                                         <li onClick={Logout} className="dropdown-item">Logout</li>
@@ -73,11 +74,11 @@ function Header() {
                         ):(
                         <>
                             <button className="btn" type="button">
-                                <NavLink to="/login" className="nav-link">Login</NavLink>
+                                <NavLink to="/users/auth/login" className="nav-link">Login</NavLink>
                                 
                             </button>
                             <button className="btn btn-primary" type="button">
-                                <NavLink to="/register" className="nav-link">Register</NavLink>
+                                <NavLink to="/users/auth/register" className="nav-link">Register</NavLink>
                             </button>
                         </>
                         )}
