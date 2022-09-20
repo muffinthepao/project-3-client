@@ -28,11 +28,13 @@ function Cart(props) {
             try {
                 const response = await axios.get(userBaseURL)
                 setUserCart(response.data)
+                console.log("response.data: ", response.data)
 
-                const cartSum = response.data.cart.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
+
+                const cartSum = response.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
                 setCartTotal(cartSum)
 
-                const totalItemsInCart = response.data.cart.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
+                const totalItemsInCart = response.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
                 setItemsTotal(totalItemsInCart)
                 setFetching(false)
     
@@ -48,7 +50,8 @@ function Cart(props) {
         
     
     const lineItemCards = () =>  (
-        userCart.cart.map((lineItem) => <LineItemCard key={lineItem._id} lineItem={lineItem} />
+        userCart.lineItems.map((lineItem) => <LineItemCard key={lineItem._id} lineItem={lineItem} />
+        // userCart.lineItems.map((lineItem) => <LineItemCard key={lineItem._id}  />
     ))
     
     return (
@@ -65,19 +68,11 @@ function Cart(props) {
 
                                 {!isFetching ? (
                                     <>
-
-                                        {/* {(
-                                             userCart.cart.map((lineItem) => 
-                                             <LineItemCard key={lineItem._id} lineItem={lineItem} />
-                                             )
-                                        )} */}
-
                                         {lineItemCards()}
-
                                     </>
                                 ) : (
                                     <>
-                                    <div className="d-flex justify-content-center">
+                                    <div>
                                         <img src={emptyCartImage} alt="empty-cart"/>
                                     </div>
                                     </>
