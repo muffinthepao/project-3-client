@@ -32,10 +32,13 @@ function BeverageDetails(props) {
 
     return beverage ? (
         <>
-            <Container>
+            <Container className="d-flex">
                 <Row className="mt-5">
                     <Col xs={5}>
-                        <img src={ImageComponent(beverage.img)} alt={beverage.name} className="showImage" />
+                        <div className="d-flex justify-content-center">
+
+                            <img src={ImageComponent(beverage.img)} alt={beverage.name} className="showImage" />    
+                        </div>
                     </Col>
                     <Col xs={7}>
                         <h4 className="price"><strong>${beverage.price.toFixed(2)}</strong></h4>
