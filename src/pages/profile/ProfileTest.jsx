@@ -8,33 +8,51 @@ import { schema } from './profile.validation'
 import styles from "../../components/stylesheets/form.module.scss"
 
 
+
 const userData = JSON.parse(localStorage.getItem("user_data")) 
 
-  function Profile() {
+
+// userdata from local storage
+// set initial useState
+// when you click update profile button,
+//setUserDetails with updated userData
+//run axios call to update in mongo.
+//update user_data in local storage with updated info
+
+  function ProfileTest() {
     const navigate = useNavigate()
+
+// useParams is the react version of req.params in express.js
+//in express -> req.params.userId
+//in react -> const {userId} = useParams();
+
     const {register, handleSubmit, formState: { errors }} = useForm({
       resolver: joiResolver(schema),
       defaultValues: {
-        fullName: `${userData?.fullName}`,
-        preferredName: `${userData?.preferredName}`,
-        email: `${userData?.email}`,
+        fullName: `${userData.fullName}`,
+        preferredName: `${userData.preferredName}`,
+        email: `${userData.email}`,
       },
     })
-
+    // const [userDetails, setUserDetails] = useState(userData)
      function onSubmit(data) {
+
       try {
+        
         let response = axios.put(
           `http://localhost:8000/api/v1/users/profile/${userData.userId}/editProfile`,
           data
         )
+
         if (response.error) {
           toast.error(response.error)
           return
         }
+
         toast.success(`Profile update Successful!`)
 
         navigate("/users/profile/:userId")
-     
+ 
       } catch (error) {
         
         console.log(userData)
@@ -44,6 +62,7 @@ const userData = JSON.parse(localStorage.getItem("user_data"))
         toast.error("Unable to update profile. Please try again later.")
       }
     }
+
 
     return (
       <>
@@ -201,4 +220,4 @@ const userData = JSON.parse(localStorage.getItem("user_data"))
   }
 
 
-export default Profile
+export default ProfileTest

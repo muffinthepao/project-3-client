@@ -13,6 +13,11 @@ function BeverageCard(props) {
     //destructurting
     const { _id, name, brandName, price, stock, description, spec, img } = props.data;
 
+    //if we dont destructure
+    // props.data._id -> this will need to be written in line 29 instead of just _id
+    // props.data.name
+    // ...
+
     console.log("props.data", props.data)
 
     return (
