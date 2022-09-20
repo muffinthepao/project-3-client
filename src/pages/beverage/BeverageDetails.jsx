@@ -48,7 +48,6 @@ function BeverageDetails({ lineItems }) {
 
         axiosCall();
 
-
     }
 
     return beverage ? (

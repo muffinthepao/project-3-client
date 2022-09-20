@@ -1,38 +1,59 @@
+import axios from "axios";
 import React, {useState} from "react";
-// import Button from 'react-bootstrap/Button';
 import { Card, Button, Placeholder } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import ImageComponent from "../../../components/image-component/ImageComponent";
-import Counter from "../../../components/order-counter/Counter";
 import styles from './beverage-card.module.scss';
 
 function BeverageCard({data, lineItems}) {
     //destructurting
     const { _id, name, brandName, price, stock, description, spec, img } = data;
 
-    // const lineItemInCart = lineItems.includes(_id)
+    const userData = JSON.parse(localStorage.getItem("user_data")) 
+    const baseBeveragesURL = "http://localhost:8000/api/v1/beverages";
+    const baseUsersURL = `http://localhost:8000/api/v1/users/${userData.userId}`;
 
-    // lineItems.filter()
+    const addToCart = () => {
+        const axiosCall = async () => {
+            try {
+                await axios.post(`${baseUsersURL}/cart`, 
+                {
+                    beverageId: _id,
+                    quantity: 1
+                });
+                // navigate(`/beverages/${beverageId}`)
+                window.location.reload(false);
+                console.log("added to cart!")
+            } catch (error) {
+                console.log(error)
+                return
+            }
+        };
 
-    let [count, setCount] = useState(1)
+        axiosCall();
 
-    let incrementCount = function(e) {
-        setCount(count + 1)
-        console.log(count)  
     }
+    
 
-    let decrementCount = e => {
-        if(count === 0) {
-            count = 0
-        } else {
-            setCount(count-1)
-        } 
-    }
+    // const [count, setCount] = useState(1)
 
-    console.log("props.data", data)
+    // let incrementCount = function(e) {
+    //     setCount(count + 1)
+    //     console.log(count)  
+    // }
+
+    // let decrementCount = e => {
+    //     if(count === 0) {
+    //         count = 0
+    //     } else {
+    //         setCount(count-1)
+    //     } 
+    // }
+
+    // console.log("props.data", data)
 
     return (
         <>
@@ -68,7 +89,7 @@ function BeverageCard({data, lineItems}) {
                                             </div>
                                             <Button variant="danger">Remove</Button>
                                         </div> */}
-                                        <Button variant="primary">Add to Cart</Button> 
+                                        <Button onClick={addToCart} variant="primary">Add to Cart</Button> 
                                     </div>
                                 </Card.Footer>
                             </Card>
