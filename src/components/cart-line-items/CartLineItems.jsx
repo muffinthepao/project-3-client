@@ -87,11 +87,8 @@ function LineItemCard({lineItem}) {
                 </div>
 
                 <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                    <Counter quantity={quantity} updateQuantity={updateQuantity}/>
-                    <label className="form-label" for={_id}>
-                        Quantity: {quantity}
-                    </label>
-                    {/* <div className="d-flex mb-4">
+                    {/* <Counter quantity={quantity} updateQuantity={updateQuantity}/> */}
+                    <div className="d-flex mb-4">
                         <button
                             className="btn btn-primary px-3 me-2"
                         >
@@ -122,7 +119,7 @@ function LineItemCard({lineItem}) {
                                 icon={icon({ name: "plus", style: "solid" })}
                             />
                         </button>
-                    </div> */}
+                    </div>
                     
 
                     <p className="text-start text-md-center">

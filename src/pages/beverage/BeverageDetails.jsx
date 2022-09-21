@@ -1,11 +1,11 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
-import axios from "axios";
 
 import ImageComponent from "../../components/image-component/ImageComponent";
 
@@ -73,7 +73,7 @@ function BeverageDetails({ setUserCart, setTotalItemsTotal }) {
                             />
                         </div>
                     </Col>
-                    <Col xs={7}>
+                    <Col xs={7} className="text-left">
                         <h4 className="price">
                             <strong>${beverage.price.toFixed(2)}</strong>
                         </h4>
@@ -90,12 +90,6 @@ function BeverageDetails({ setUserCart, setTotalItemsTotal }) {
 
                         <div className="counter mt-5">
                             <Button onClick={addToCart} variant="primary">Add to Cart</Button>
-                            {/* 
-                            {lineItemInCart ? (
-                                <Button variant="danger">Remove</Button>
-                            ) : (
-                                ""
-                            )} */}
                         </div>
 
                         <div className="mt-5">

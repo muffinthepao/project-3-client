@@ -11,6 +11,9 @@
 
 .col {
     padding-top: 25px;
+    .bev-details {
+        text-align: left;
+    }
 }
 
 .description {
@@ -20,6 +23,7 @@
     font-size: 1rem;
     line-height: 1rem;
 }
+
 
 .details {
     font-family: Lato, sans-serif;
@@ -66,14 +70,3 @@
     border-width: 0;
     background-color: white;
 }
-
-// .maincard {
-//     display: flex;
-//     flex-direction: row
-// }
-
-// .seccard {   
-//     width: auto;
-//     display: inline-block;  
-// }
-
