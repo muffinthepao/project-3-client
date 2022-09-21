@@ -75,7 +75,7 @@ function App() {
                     <Route path="/users/auth/login" element={<Login />} />
                     <Route path="/users/auth/register" element={<Register />} />
                     <Route path="/users/profile/:userId" element={<Profile />} />
-                    <Route path="/users/:userId/cart" element={<Cart isFetchingCart={isFetchingCart} userCart={userCart} cartTotalPrice={cartTotalPrice} totalItemsInCart={totalItemsInCart}/>} />
+                    <Route path="/users/:userId/cart" element={<Cart isFetchingCart={isFetchingCart} userCart={userCart} cartTotalPrice={cartTotalPrice} totalItemsInCart={totalItemsInCart} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
                 </Routes>
 
                 <ToastContainer />

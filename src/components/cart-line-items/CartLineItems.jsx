@@ -4,9 +4,9 @@ import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { Link } from "react-router-dom";
 
 import ImageComponent from "../image-component/ImageComponent";
-import Counter from "../order-counter/Counter";
+// import Counter from "../order-counter/Counter";
 
-function LineItemCard({lineItem}) {
+function LineItemCard({lineItem, setUserCart, setTotalItemsTotal}) {
     
     // destructurting
     const { _id, name, price, spec, img } = lineItem.product;
@@ -20,8 +20,13 @@ function LineItemCard({lineItem}) {
         const axiosCall = async () => {
             try {
                 await axios.delete(`${baseUsersURL}/cart/lineItem/${lineItem._id}`);
-                // navigate(`/beverages/${beverageId}`)
-                window.location.reload(false);
+
+                const getUpdatedCart = await axios.get(`${baseUsersURL}/cart`)
+                const totalItemsInCart = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
+                
+                setUserCart(getUpdatedCart.data)
+                setTotalItemsTotal(totalItemsInCart)
+
                 console.log("deleted from cart!")
             } catch (error) {
                 console.log(error)
@@ -31,10 +36,6 @@ function LineItemCard({lineItem}) {
 
         axiosCall();
 
-    }
-
-    const updateQuantity = (x) => {
-        console.log(`quantity updated to ${x}`)
     }
 
     return (

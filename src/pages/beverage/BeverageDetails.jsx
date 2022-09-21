@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 import Container from "react-bootstrap/Container";
@@ -27,7 +27,6 @@ function BeverageDetails({ setUserCart, setTotalItemsTotal }) {
     }, [beverageId]);
 
     const addToCart = () => {
-        const userData = JSON.parse(localStorage.getItem("user_data")) 
         const baseUsersURL = `http://localhost:8000/api/v1/users/${userData.userId}`;
 
         const axiosCall = async () => {
