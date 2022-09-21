@@ -70,8 +70,8 @@ function App() {
 
                 <Routes>
                     <Route path="/" />
-                    <Route path="/beverages" element={<Beverages lineItems={userCart.lineItems} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
-                    <Route path="/beverages/:beverageId"element={<BeverageDetails lineItems={userCart.lineItems}/>} />
+                    <Route path="/beverages" element={<Beverages setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
+                    <Route path="/beverages/:beverageId"element={<BeverageDetails setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
                     <Route path="/users/auth/login" element={<Login />} />
                     <Route path="/users/auth/register" element={<Register />} />
                     <Route path="/users/profile/:userId" element={<Profile />} />

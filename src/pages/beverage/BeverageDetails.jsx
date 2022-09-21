@@ -4,7 +4,6 @@ import { Button } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import styles from "./beverage-details.scss";
 
 import axios from "axios";
 
@@ -12,11 +11,9 @@ import ImageComponent from "../../components/image-component/ImageComponent";
 
 const userData = JSON.parse(localStorage.getItem("user_data")) 
 const baseBeveragesURL = "http://localhost:8000/api/v1/beverages";
-const baseUsersURL = `http://localhost:8000/api/v1/users/${userData?.userId}`;
 
+function BeverageDetails({ setUserCart, setTotalItemsTotal }) {
 
-function BeverageDetails({ lineItems }) {
-    const navigate = useNavigate()
     const { beverageId } = useParams();
     const [beverage, setBeverage] = useState(null);
 
@@ -40,6 +37,16 @@ function BeverageDetails({ lineItems }) {
                     beverageId,
                     quantity: 1
                 });
+
+                const getUpdatedCart = await axios.get(`${baseUsersURL}/cart`)
+                const totalItemsInCart = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
+                
+                setUserCart(getUpdatedCart.data)
+                setTotalItemsTotal(totalItemsInCart)
+                
+
+                const updatedBeverageDetails = await axios.get(`${baseBeveragesURL}/${beverageId}`);
+                setBeverage(updatedBeverageDetails.data);
 
 
                 console.log("added to cart!")
