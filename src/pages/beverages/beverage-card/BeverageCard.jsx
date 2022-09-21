@@ -7,15 +7,15 @@ import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import ImageComponent from "../../../components/image-component/ImageComponent";
 import styles from './beverage-card.module.scss';
+import { useEffect } from "react";
 
-function BeverageCard({data, lineItems}) {
+function BeverageCard({data, setUserCart, setTotalItemsTotal}) {
     //destructurting
     const { _id, name, brandName, price, stock, description, spec, img } = data;
 
-    const userData = JSON.parse(localStorage.getItem("user_data")) 
-    const baseUsersURL = `http://localhost:8000/api/v1/users/${userData.userId}`;
-
     const addToCart = () => {
+        const userData = JSON.parse(localStorage.getItem("user_data")) 
+        const baseUsersURL = `http://localhost:8000/api/v1/users/${userData.userId}`;
         const axiosCall = async () => {
             try {
                 await axios.post(`${baseUsersURL}/cart`, 
@@ -23,9 +23,12 @@ function BeverageCard({data, lineItems}) {
                     beverageId: _id,
                     quantity: 1
                 });
-                // navigate(`/beverages/${beverageId}`)
-                window.location.reload(false);
-                console.log("added to cart!")
+
+                const getUpdatedCart = await axios.get(`${baseUsersURL}/cart`)
+                const totalItemsInCart = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
+                
+                setUserCart(getUpdatedCart.data)
+                setTotalItemsTotal(totalItemsInCart)
             } catch (error) {
                 console.log(error)
                 return
@@ -33,6 +36,19 @@ function BeverageCard({data, lineItems}) {
         };
 
         axiosCall();
+
+        //method 1
+        //response should contain updated cart
+        // lift response to parent
+        // in parent, get new cart, updateCart
+
+        //method 2
+        //call pass updated cart back to parent
+        //run setUserCart(updatedCart)
+
+        // method 3
+        // function fed down to child
+        // run whatever function when i get the cart
 
     }
     

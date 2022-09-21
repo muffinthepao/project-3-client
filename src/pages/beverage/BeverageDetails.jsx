@@ -12,7 +12,7 @@ import ImageComponent from "../../components/image-component/ImageComponent";
 
 const userData = JSON.parse(localStorage.getItem("user_data")) 
 const baseBeveragesURL = "http://localhost:8000/api/v1/beverages";
-const baseUsersURL = `http://localhost:8000/api/v1/users/${userData.userId}`;
+const baseUsersURL = `http://localhost:8000/api/v1/users/${userData?.userId}`;
 
 
 function BeverageDetails({ lineItems }) {
@@ -30,6 +30,9 @@ function BeverageDetails({ lineItems }) {
     }, [beverageId]);
 
     const addToCart = () => {
+        const userData = JSON.parse(localStorage.getItem("user_data")) 
+        const baseUsersURL = `http://localhost:8000/api/v1/users/${userData.userId}`;
+
         const axiosCall = async () => {
             try {
                 await axios.post(`${baseUsersURL}/cart`, 
@@ -37,8 +40,8 @@ function BeverageDetails({ lineItems }) {
                     beverageId,
                     quantity: 1
                 });
-                // navigate(`/beverages/${beverageId}`)
-                window.location.reload(false);
+
+
                 console.log("added to cart!")
             } catch (error) {
                 console.log(error)

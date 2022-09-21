@@ -19,7 +19,7 @@ import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 function App() {
 
-    const { userId } = JSON.parse(localStorage.getItem("user_data"))
+    const {userId} = JSON.parse(localStorage.getItem("user_data"))
 
     const [isFetchingCart, setFetchingCart] = useState(true)
     const [userCart, setUserCart] = useState({})
@@ -27,8 +27,13 @@ function App() {
     const [totalItemsInCart, setTotalItemsTotal] = useState(0)
 
     useEffect(() => {
+        //if(userId) {run getCart()} <----- look here
+
         //cart with items
         const userBaseURL = `http://localhost:8000/api/v1/users/${userId}/cart`;
+
+        //env
+        // BASE_URL=<from backend deployment>+ /api/v1
         
         // //empty cart
         // const userBaseURL = `http://localhost:8000/api/v1/users/6320744d7143eaf92da07de2/cart`;
@@ -57,6 +62,7 @@ function App() {
 
     },[]);
     
+    console.log(userCart)
     return (
         <div className="App">
             <ShoppingCartProvider>
@@ -64,7 +70,7 @@ function App() {
 
                 <Routes>
                     <Route path="/" />
-                    <Route path="/beverages" element={<Beverages lineItems={userCart.lineItems}/>} />
+                    <Route path="/beverages" element={<Beverages lineItems={userCart.lineItems} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
                     <Route path="/beverages/:beverageId"element={<BeverageDetails lineItems={userCart.lineItems}/>} />
                     <Route path="/users/auth/login" element={<Login />} />
                     <Route path="/users/auth/register" element={<Register />} />
