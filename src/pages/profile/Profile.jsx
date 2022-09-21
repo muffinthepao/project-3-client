@@ -3,9 +3,10 @@ import axios from "axios" // send data to server
 import { joiResolver } from "@hookform/resolvers/joi" // front end react validation
 import { toast } from "react-toastify" // pop-up message success/failure ...
 import { useForm } from "react-hook-form" // handles form input in client
-import { useParams, useNavigate, Link } from "react-router-dom"
+import { useParams, useNavigate, NavLink } from "react-router-dom"
 import { schema } from "./profile.validation"
 import styles from "../../components/stylesheets/form.module.scss"
+import SideBar from '../../components/side-bar/SideBar'
 
 function Profile() {
 
@@ -92,8 +93,11 @@ function Profile() {
 
   return (
     <>
+    
+    
       <div className="container my-5">
         <div className="row">
+        <SideBar />
           <div className="col-2"></div>
 
           {/* --------------------User Details-------------------- */}
@@ -151,7 +155,7 @@ function Profile() {
                 </div>
 
                 <div className="d-grid gap-2">
-                  <button className="btn btn-primary" type="submit">
+                  <button type="submit" className="btn btn-danger">
                     Update profile
                   </button>
                 </div>
@@ -215,7 +219,7 @@ function Profile() {
                   </p>
                 </div>
                 <div className="d-grid gap-2">
-                  <button className="btn btn-primary" type="submit">
+                  <button type="submit" className="btn btn-danger">
                     Change Password
                   </button>
                 </div>
