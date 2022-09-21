@@ -171,7 +171,7 @@ function Profile() {
                     Current Password
                   </label>
                   <input
-                    type="string"
+                    type="password"
                     className="form-control"
                     name="currentPassword"
                     value={userPassword.currentPassword}
@@ -186,7 +186,7 @@ function Profile() {
                     New Password
                   </label>
                   <input
-                    type="string"
+                    type="password"
                     className="form-control"
                     name="newPassword"
                     value={userPassword.newPassword}
@@ -204,7 +204,7 @@ function Profile() {
                     Confirm New Password
                   </label>
                   <input
-                    type="string"
+                    type="password"
                     className="form-control"
                     name="confirmNewPassword"
                     value={userPassword.confirmNewPassword}
