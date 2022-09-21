@@ -4,6 +4,7 @@ import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { Link } from "react-router-dom";
 
 import ImageComponent from "../image-component/ImageComponent";
+import Counter from "../order-counter/Counter";
 
 function LineItemCard({lineItem}) {
     
@@ -30,6 +31,10 @@ function LineItemCard({lineItem}) {
 
         axiosCall();
 
+    }
+
+    const updateQuantity = (x) => {
+        console.log(`quantity updated to ${x}`)
     }
 
     return (
@@ -82,7 +87,11 @@ function LineItemCard({lineItem}) {
                 </div>
 
                 <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                    <div className="d-flex mb-4">
+                    <Counter quantity={quantity} updateQuantity={updateQuantity}/>
+                    <label className="form-label" for={_id}>
+                        Quantity: {quantity}
+                    </label>
+                    {/* <div className="d-flex mb-4">
                         <button
                             className="btn btn-primary px-3 me-2"
                         >
@@ -113,7 +122,8 @@ function LineItemCard({lineItem}) {
                                 icon={icon({ name: "plus", style: "solid" })}
                             />
                         </button>
-                    </div>
+                    </div> */}
+                    
 
                     <p className="text-start text-md-center">
                         <strong>${price.toFixed(2)}</strong>

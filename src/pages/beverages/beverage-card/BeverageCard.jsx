@@ -53,7 +53,6 @@ function BeverageCard({data, lineItems}) {
     // }
 
     // console.log("props.data", data)
-
     return (
         <>
         <div className="d-grid gap-3">
