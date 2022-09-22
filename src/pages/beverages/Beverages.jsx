@@ -2,14 +2,15 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 import BeverageCard from "./beverage-card/BeverageCard";
+import BeverageCardPlaceHolder from "./beverage-card/BeverageCardPlaceholder";
 import Spinner from "react-bootstrap/Spinner";
 import styles from './beverage-card/beverage-card.module.scss'
 
 const baseURL = "http://localhost:8000/api/v1/beverages";
 
-function Beverages() {
+function Beverages({lineItems, setUserCart, setTotalItemsTotal}) {
     const [beverages, setBeverages] = useState([]);
-
+    
     useEffect(() => {
         // //fetch method
         // const getBeverages = async () => {
@@ -29,7 +30,7 @@ function Beverages() {
     }, []);
 
     const beverageCards = beverages.map((beverage) => (
-        <BeverageCard key={beverage._id} data={beverage} />
+        <BeverageCard key={beverage._id} data={beverage} lineItems={lineItems} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal} />
     ));
 
     console.log(beverages)
@@ -41,7 +42,20 @@ function Beverages() {
                         { beverageCards }
                     </>
                 ) : (
-                    <Spinner animation="border" variant="primary" />
+                    <>
+                    <div className="d-flex flex-wrap">
+                        {/* <Spinner animation="border" variant="primary" /> */}
+                        <BeverageCardPlaceHolder />
+                        <BeverageCardPlaceHolder />
+                        <BeverageCardPlaceHolder />
+                        <BeverageCardPlaceHolder />
+                        <BeverageCardPlaceHolder />
+                        <BeverageCardPlaceHolder />
+                        <BeverageCardPlaceHolder />
+                        <BeverageCardPlaceHolder />
+                    </div>
+                    </>
+
                 )}
             {/* </div> */}
         </div>     
