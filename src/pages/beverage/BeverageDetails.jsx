@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
+import styles from "./beverage-details.scss"
 import ImageComponent from "../../components/image-component/ImageComponent";
 
 const userData = JSON.parse(localStorage.getItem("user_data")) 
@@ -72,33 +73,35 @@ function BeverageDetails({ setUserCart, setTotalItemsTotal }) {
                             />
                         </div>
                     </Col>
-                    <Col xs={7} className="text-left">
-                        <h4 className="price">
-                            <strong>${beverage.price.toFixed(2)}</strong>
-                        </h4>
-                        <div className="saledetails">
-                            <h3>{beverage.name}</h3>
+                    <Col xs={7}>
+                        <div className="bev-details">
+                            <h4 className="price">
+                                <strong>${beverage.price.toFixed(2)}</strong>
+                            </h4>
+                            <div className="saledetails">
+                                <h3>{beverage.name}</h3>
 
-                            <div>
-                                <span>{beverage.spec} | </span>
-                                <span>Brand: {beverage.brandName}</span>
+                                <div>
+                                    <span>{beverage.spec} | </span>
+                                    <span>Brand: {beverage.brandName}</span>
+                                </div>
+
+                                <p>Stock Available: {beverage.stock}</p>
                             </div>
 
-                            <p>Stock Available: {beverage.stock}</p>
-                        </div>
+                            <div className="counter mt-5">
+                                <Button onClick={addToCart} variant="primary">Add to Cart</Button>
+                            </div>
 
-                        <div className="counter mt-5">
-                            <Button onClick={addToCart} variant="primary">Add to Cart</Button>
-                        </div>
-
-                        <div className="mt-5">
-                            <h3 className="description">Description</h3>
-                            <p className="details">{beverage.description}</p>
+                            <div className="mt-5">
+                                <h3 className="description">Description</h3>
+                                <p className="details">{beverage.description}</p>
+                            </div>
                         </div>
                     </Col>
                 </Row>
             </Container>
-        </>
+    </>
     ) : null;
 }
 
