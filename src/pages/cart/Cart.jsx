@@ -13,6 +13,7 @@ function Cart({
     totalItemsInCart,
     setUserCart,
     setTotalItemsTotal,
+    setCartTotalPrice
 }) {
     const navigate = useNavigate();
     const userData = JSON.parse(localStorage.getItem("user_data"));
@@ -24,6 +25,7 @@ function Cart({
                 lineItem={lineItem}
                 setUserCart={setUserCart}
                 setTotalItemsTotal={setTotalItemsTotal}
+                setCartTotalPrice={setCartTotalPrice}
             />
         ));
 
@@ -91,7 +93,7 @@ function Cart({
                                         <li className="list-group-item d-flex justify-content-between align-items-center border-0 px-0 pb-0">
                                             Products
                                             <span>
-                                                {cartTotalPrice.toFixed(2)}
+                                                ${cartTotalPrice.toFixed(2)}
                                             </span>
                                         </li>
 
@@ -111,7 +113,7 @@ function Cart({
                                             </div>
                                             <span>
                                                 <strong>
-                                                    {cartTotalPrice.toFixed(2)}
+                                                    ${cartTotalPrice.toFixed(2)}
                                                 </strong>
                                             </span>
                                         </li>

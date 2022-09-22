@@ -60,7 +60,7 @@ function App() {
 
        getCart().catch(console.error);
 
-    },[]);
+    },[userId]);
     
     console.log(userCart)
     return (
@@ -75,7 +75,7 @@ function App() {
                     <Route path="/users/auth/login" element={<Login />} />
                     <Route path="/users/auth/register" element={<Register />} />
                     <Route path="/users/profile/:userId" element={<Profile />} />
-                    <Route path="/users/:userId/cart" element={<Cart isFetchingCart={isFetchingCart} userCart={userCart} cartTotalPrice={cartTotalPrice} totalItemsInCart={totalItemsInCart} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
+                    <Route path="/users/:userId/cart" element={<Cart isFetchingCart={isFetchingCart} userCart={userCart} cartTotalPrice={cartTotalPrice} totalItemsInCart={totalItemsInCart} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal} setCartTotalPrice={setCartTotalPrice}/>} />
                 </Routes>
 
                 <ToastContainer />

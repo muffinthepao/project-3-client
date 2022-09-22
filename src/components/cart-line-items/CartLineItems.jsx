@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import ImageComponent from "../image-component/ImageComponent";
 // import Counter from "../order-counter/Counter";
 
-function LineItemCard({lineItem, setUserCart, setTotalItemsTotal}) {
+function LineItemCard({lineItem, setUserCart, setTotalItemsTotal, setCartTotalPrice}) {
     
     // destructurting
     const { _id, name, price, spec, img } = lineItem.product;
@@ -23,9 +23,11 @@ function LineItemCard({lineItem, setUserCart, setTotalItemsTotal}) {
 
                 const getUpdatedCart = await axios.get(`${baseUsersURL}/cart`)
                 const totalItemsInCart = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
+                const cartSum = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
                 
                 setUserCart(getUpdatedCart.data)
                 setTotalItemsTotal(totalItemsInCart)
+                setCartTotalPrice(cartSum)
 
                 console.log("deleted from cart!")
             } catch (error) {
@@ -36,6 +38,54 @@ function LineItemCard({lineItem, setUserCart, setTotalItemsTotal}) {
 
         axiosCall();
 
+    }
+
+    const increaseQuantity = () => {
+        const axiosCall = async () => {
+            try {
+                await axios.patch(`${baseUsersURL}/cart/lineItem/${lineItem._id}`, {
+                    quantity: quantity + 1
+                })
+
+                const getUpdatedCart = await axios.get(`${baseUsersURL}/cart`)
+                const totalItemsInCart = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
+                const cartSum = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
+
+                setUserCart(getUpdatedCart.data)
+                setTotalItemsTotal(totalItemsInCart)
+                setCartTotalPrice(cartSum)
+
+            } catch (error) {
+                console.log(error)
+                return
+            }
+        }
+
+        axiosCall();
+    }
+
+    const decreaseQuantity = () => {
+        const axiosCall = async () => {
+            try {
+                await axios.patch(`${baseUsersURL}/cart/lineItem/${lineItem._id}`, {
+                    quantity: quantity - 1
+                })
+
+                const getUpdatedCart = await axios.get(`${baseUsersURL}/cart`)
+                const totalItemsInCart = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
+                const cartSum = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
+
+                setUserCart(getUpdatedCart.data)
+                setTotalItemsTotal(totalItemsInCart)
+                setCartTotalPrice(cartSum)
+
+            } catch (error) {
+                console.log(error)
+                return
+            }
+        }
+
+        axiosCall();
     }
 
     return (
@@ -88,32 +138,34 @@ function LineItemCard({lineItem, setUserCart, setTotalItemsTotal}) {
                 </div>
 
                 <div className="col-lg-4 col-md-6 mb-4 mb-lg-0">
-                    {/* <Counter quantity={quantity} updateQuantity={updateQuantity}/> */}
-                    <div className="d-flex mb-4">
+    
+                    <div className="d-flex mb-4 justify-content-center">
                         <button
                             className="btn btn-primary px-3 me-2"
+                            onClick={decreaseQuantity}
                         >
                             <FontAwesomeIcon
                                 icon={icon({ name: "minus", style: "solid" })}
                             />
                         </button>
 
-                        <div className="form-outline">
-                            <input
+                        <div className="form-outline my-auto">
+                            {/* <input
                                 id={_id}
                                 min="0"
                                 name="quantity"
-                                defaultValue= {quantity}
+                                value= {quantity}
                                 type="number"
                                 className="form-control"
-                            />
-                            <label className="form-label" for={_id}>
-                                Quantity: {quantity}
+                            /> */}
+                            <label className="form-label d-flex justify-content-center my-auto" for={_id}>
+                                <strong>{quantity} in Cart</strong>
                             </label>
                         </div>
 
                         <button
                             className="btn btn-primary px-3 ms-2"
+                            onClick={increaseQuantity}
                             // onclick="this.parentNode.querySelector('input[type=number]').stepUp()"
                         >
                             <FontAwesomeIcon
