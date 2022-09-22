@@ -6,22 +6,12 @@ import BeverageCardPlaceHolder from "./beverage-card/BeverageCardPlaceholder";
 import Spinner from "react-bootstrap/Spinner";
 import styles from './beverage-card/beverage-card.module.scss'
 
-const baseURL = "http://localhost:8000/api/v1/beverages";
+const baseURL = `${process.env.BEVERAGES_BASE_URL}`;
 
 function Beverages({lineItems, setUserCart, setTotalItemsTotal}) {
     const [beverages, setBeverages] = useState([]);
     
     useEffect(() => {
-        // //fetch method
-        // const getBeverages = async () => {
-        //     const response = await fetch('http://localhost:8000/api/v1/beverages')
-        //     const data = await response.json()
-
-        //     setBeverages(data)
-        //     console.log(data)
-        // }
-        // getBeverages();
-
         axios.get(baseURL).then((response) => {
             setBeverages(response.data);
         });
@@ -44,7 +34,8 @@ function Beverages({lineItems, setUserCart, setTotalItemsTotal}) {
                 ) : (
                     <>
                     <div className="d-flex flex-wrap">
-                        {/* <Spinner animation="border" variant="primary" /> */}
+                        <BeverageCardPlaceHolder />
+                        <BeverageCardPlaceHolder />
                         <BeverageCardPlaceHolder />
                         <BeverageCardPlaceHolder />
                         <BeverageCardPlaceHolder />
