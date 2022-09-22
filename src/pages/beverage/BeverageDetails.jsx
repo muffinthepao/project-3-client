@@ -7,13 +7,12 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
-import styles from "./beverage-details.scss"
 import ImageComponent from "../../components/image-component/ImageComponent";
 
-const userData = JSON.parse(localStorage.getItem("user_data")) 
+// const userData = JSON.parse(localStorage.getItem("user_data")) 
 const baseBeveragesURL = "http://localhost:8000/api/v1/beverages";
 
-function BeverageDetails({ setUserCart, setTotalItemsTotal }) {
+function BeverageDetails({ setUserCart, setTotalItemsTotal, userData }) {
 
     const { beverageId } = useParams();
     const [beverage, setBeverage] = useState(null);

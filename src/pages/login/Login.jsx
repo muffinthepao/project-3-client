@@ -1,7 +1,5 @@
 import React from "react";
 import axios from "axios"
-import Joi from "joi";
-// import { Link } from "react-router-dom";
 import { joiResolver } from "@hookform/resolvers/joi";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
@@ -12,7 +10,7 @@ import ImageComponent from "../../components/image-component/ImageComponent";
 import loginImg from "./refreshing_beverage_td3r.svg";
 import styles from '../../components/stylesheets/form.module.scss'
 
-function Login(props) {
+function Login({setUserData}) {
     const navigate = useNavigate();
     const {
         register,
@@ -25,8 +23,8 @@ function Login(props) {
             // email: "",
             // password: "",
 
-            email: "mervin1@gmail.com",
-            password: "1234"
+            email: "drink@gmail.com",
+            password: "1111"
         },
     });
 
@@ -48,6 +46,7 @@ function Login(props) {
 
             localStorage.setItem("user_token", token)
             localStorage.setItem("user_data", JSON.stringify(userData))
+            setUserData(userData)
 
             navigate("/beverages")
         } catch (error) {
