@@ -1,4 +1,4 @@
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { toast } from "react-toastify"; 
@@ -8,7 +8,7 @@ import styles from './header.module.scss'
 // import Logout from "../logout/Logout";
 
 
-function Header() {
+function Header({totalItemsInCart}) {
 
     const navigate = useNavigate()
 
@@ -26,11 +26,10 @@ function Header() {
         toast.success("Logout Successful!")
         console.log("wow")
     
-    
     }
 
     return (
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand-lg bg-light sticky-top">
             <div className="container-fluid">
                 
                 <NavLink to="/" className="navbar-brand">
@@ -40,7 +39,7 @@ function Header() {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <NavLink to="/" className="nav-link active" aria-current="page">Home</NavLink>
+                            <NavLink to="/" className="nav-link" aria-current="page">Home</NavLink>
                         </li>
                         <li className="nav-item">
                             <NavLink to="/beverages" className="nav-link">Beverages</NavLink>
@@ -52,7 +51,11 @@ function Header() {
                         <NavLink to={`/users/${userData?.userId}/cart`}>
                             <button type="button" className="btn btn-light">
                                 <FontAwesomeIcon className="mx-1 px-1" icon={icon({name: 'shopping-cart', style: 'solid' })} />
-                                <span className="badge text-bg-secondary mx-1">4</span>
+                                {totalItemsInCart !== 0 ? (
+                                    <span className="badge text-bg-secondary mx-1">{totalItemsInCart}</span>
+                                ) : (
+                                    ""
+                                )}
                             </button>
                         </NavLink>
                     
