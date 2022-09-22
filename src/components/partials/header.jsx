@@ -1,4 +1,4 @@
-import { NavLink, Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { toast } from "react-toastify"; 
@@ -29,7 +29,7 @@ function Header({totalItemsInCart}) {
     }
 
     return (
-        <nav className="navbar navbar-expand-lg bg-light">
+        <nav className="navbar navbar-expand-lg bg-light sticky-top">
             <div className="container-fluid">
                 
                 <NavLink to="/" className="navbar-brand">
