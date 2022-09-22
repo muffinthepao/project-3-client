@@ -19,7 +19,8 @@ import { ShoppingCartProvider } from "./context/ShoppingCartContext";
 
 function App() {
 
-    const {userId} = JSON.parse(localStorage.getItem("user_data"))
+    const userLoggedIn = localStorage.getItem("user_token")
+   
 
     const [isFetchingCart, setFetchingCart] = useState(true)
     const [userCart, setUserCart] = useState({})
@@ -27,40 +28,44 @@ function App() {
     const [totalItemsInCart, setTotalItemsTotal] = useState(0)
 
     useEffect(() => {
-        //if(userId) {run getCart()} <----- look here
-
-        //cart with items
-        const userBaseURL = `http://localhost:8000/api/v1/users/${userId}/cart`;
-
-        //env
-        // BASE_URL=<from backend deployment>+ /api/v1
+        if (userLoggedIn) {
+            
+            const {userId} = JSON.parse(localStorage.getItem("user_data"))
+            //if(userId) {run getCart()} <----- look here
+    
+            //cart with items
+            const userBaseURL = `http://localhost:8000/api/v1/users/${userId}/cart`;
+    
+            //env
+            // BASE_URL=<from backend deployment>+ /api/v1
+            
+            // //empty cart
+            // const userBaseURL = `http://localhost:8000/api/v1/users/6320744d7143eaf92da07de2/cart`;
+            const getCart = async () => {
         
-        // //empty cart
-        // const userBaseURL = `http://localhost:8000/api/v1/users/6320744d7143eaf92da07de2/cart`;
-        const getCart = async () => {
+                try {
+                    const response = await axios.get(userBaseURL)
+                    setUserCart(response.data)
+                    console.log("response.data: ", response.data)
     
-            try {
-                const response = await axios.get(userBaseURL)
-                setUserCart(response.data)
-                console.log("response.data: ", response.data)
-
-
-                const cartSum = response.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
-                setCartTotalPrice(cartSum)
-
-                const totalItemsInCart = response.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
-                setTotalItemsTotal(totalItemsInCart)
-                setFetchingCart(false)
     
-            } catch (error) {
-                console.log(error)
-                return
+                    const cartSum = response.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
+                    setCartTotalPrice(cartSum)
+    
+                    const totalItemsInCart = response.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
+                    setTotalItemsTotal(totalItemsInCart)
+                    setFetchingCart(false)
+        
+                } catch (error) {
+                    console.log(error)
+                    return
+                }
             }
+    
+           getCart().catch(console.error);
         }
 
-       getCart().catch(console.error);
-
-    },[userId]);
+    },[userLoggedIn]);
     
     console.log(userCart)
     return (
