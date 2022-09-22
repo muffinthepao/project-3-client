@@ -2,6 +2,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
+
 import LineItemCard from "../../components/cart-line-items/CartLineItems";
 import emptyCartImage from "../cart/empty-cart.png";
 
@@ -18,16 +19,30 @@ function Cart({
     const navigate = useNavigate();
     const userData = JSON.parse(localStorage.getItem("user_data"));
 
-    const lineItemCards = () =>
-        userCart.lineItems.map((lineItem) => (
-            <LineItemCard
-                key={lineItem._id}
-                lineItem={lineItem}
-                setUserCart={setUserCart}
-                setTotalItemsTotal={setTotalItemsTotal}
-                setCartTotalPrice={setCartTotalPrice}
-            />
-        ));
+    const lineItemCards = () => {
+        if (userCart.lineItems.length !== 0) {
+            return userCart.lineItems.map((lineItem) => (
+                <LineItemCard
+                    key={lineItem._id}
+                    lineItem={lineItem}
+                    setUserCart={setUserCart}
+                    setTotalItemsTotal={setTotalItemsTotal}
+                    setCartTotalPrice={setCartTotalPrice}
+                />
+            ));
+
+        } else {
+            return (
+                <div>
+                    <img
+                        src={emptyCartImage}
+                        alt="empty-cart"
+                    />
+                </div>
+            )
+        }
+
+    }
 
     const onCheckout = () => {
         const baseUsersURL = `http://localhost:8000/api/v1/users/${userData.userId}`;
