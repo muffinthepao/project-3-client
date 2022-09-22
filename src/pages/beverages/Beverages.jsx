@@ -34,7 +34,6 @@ function Beverages({lineItems, setUserCart, setTotalItemsTotal}) {
                 ) : (
                     <>
                     <div className="d-flex flex-wrap">
-                        {/* <Spinner animation="border" variant="primary" /> */}
                         <BeverageCardPlaceHolder />
                         <BeverageCardPlaceHolder />
                         <BeverageCardPlaceHolder />
