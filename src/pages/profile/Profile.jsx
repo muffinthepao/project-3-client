@@ -1,14 +1,12 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios" // send data to server
-import { joiResolver } from "@hookform/resolvers/joi" // front end react validation
 import { toast } from "react-toastify" // pop-up message success/failure ...
-import { useForm } from "react-hook-form" // handles form input in client
-import { useParams, useNavigate, NavLink } from "react-router-dom"
-import { schema } from "./profile.validation"
+
+import { useNavigate } from "react-router-dom"
 import styles from "../../components/stylesheets/form.module.scss"
 import SideBar from '../../components/side-bar/SideBar'
 
-function Profile() {
+function Profile({setUserData}) {
 
   // userdata from local storage
   const userData = JSON.parse(localStorage.getItem("user_data")) // converts string of user_data into a constructed object
@@ -53,6 +51,7 @@ function Profile() {
       )
       console.log("response.data.newData: ", response.data.newData)
       localStorage.setItem("user_data", JSON.stringify(response.data.newData)) // update user_data in local storage with updated info
+      setUserData(response.data.newData)
       if (response.error) {
         toast.error(response.error)
         return

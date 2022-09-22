@@ -23,6 +23,7 @@ function App() {
 
     const userLoggedIn = localStorage.getItem("user_token")
    
+    const [userData, setUserData] = useState({})
 
     const [isFetchingCart, setFetchingCart] = useState(true)
     const [userCart, setUserCart] = useState({})
@@ -32,17 +33,12 @@ function App() {
     useEffect(() => {
         if (userLoggedIn) {
             
-            const {userId} = JSON.parse(localStorage.getItem("user_data"))
-            //if(userId) {run getCart()} <----- look here
+            let userId = userData.userId
+
     
             //cart with items
             const userBaseURL = `http://localhost:8000/api/v1/users/${userId}/cart`;
-    
-            //env
-            // BASE_URL=<from backend deployment>+ /api/v1
             
-            // //empty cart
-            // const userBaseURL = `http://localhost:8000/api/v1/users/6320744d7143eaf92da07de2/cart`;
             const getCart = async () => {
         
                 try {
@@ -73,15 +69,15 @@ function App() {
     return (
         <div className="App">
             
-                <Header totalItemsInCart={totalItemsInCart}/>
+                <Header totalItemsInCart={totalItemsInCart} userData={userData}/>
 
                 <Routes>
                     <Route path="/" />
                     <Route path="/beverages" element={<Beverages setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
-                    <Route path="/beverages/:beverageId"element={<BeverageDetails setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
-                    <Route path="/users/auth/login" element={<Login />} />
+                    <Route path="/beverages/:beverageId"element={<BeverageDetails userData={userData} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
+                    <Route path="/users/auth/login" element={<Login setUserData={setUserData}/>} />
                     <Route path="/users/auth/register" element={<Register />} />
-                    <Route path="/users/profile/:userId" element={<Profile />} />
+                    <Route path="/users/profile/:userId" element={<Profile setUserData={setUserData} />} />
                     <Route path="/users/:userId/cart" element={<Cart isFetchingCart={isFetchingCart} userCart={userCart} cartTotalPrice={cartTotalPrice} totalItemsInCart={totalItemsInCart} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal} setCartTotalPrice={setCartTotalPrice}/>} />
                     <Route path= "*" element={<NotFound />}/>
                     {/* <Route path="/users/savedListings/:userId" element={<SavedListings />} />

@@ -8,13 +8,13 @@ import styles from './header.module.scss'
 // import Logout from "../logout/Logout";
 
 
-function Header({totalItemsInCart}) {
-
+function Header({totalItemsInCart, userData}) {
+    console.log("header userData", userData)
     const navigate = useNavigate()
 
     //get user token to show "Profile" rather than "Login/Register"
     const token = localStorage.getItem("user_token")
-    const userData = JSON.parse(localStorage.getItem("user_data")) 
+    // const userData1 = JSON.parse(localStorage.getItem("user_data"))
 
     const user = token? (jwt_decode(token)) : null
 
@@ -64,7 +64,7 @@ function Header({totalItemsInCart}) {
                             <>
                                 <div className="btn-group">
                                     <button type="button" className="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                        {user.data.email}
+                                        {userData.email}
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-end">
                                         <li><NavLink to={`/users/profile/${userData?.userId}`} className="dropdown-item">Account</NavLink></li>
