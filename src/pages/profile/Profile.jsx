@@ -42,7 +42,7 @@ function Profile({setUserData}) {
     try {
       let response = await axios.put(
         // run axios call to update in mongo.
-        `http://localhost:8000/api/v1/users/profile/${userDetails.userId}/editProfile`,
+        `${process.env.USER_BASE_URL}/profile/${userDetails.userId}/editProfile`,
         {
           fullName: userDetails.fullName,
           preferredName: userDetails.preferredName,
@@ -70,7 +70,7 @@ function Profile({setUserData}) {
     try {
       let response = await axios.put(
         // run axios call to update in mongo.
-        `http://localhost:8000/api/v1/users/profile/${userDetails.userId}/changePassword`,
+        `${process.env.USER_BASE_URL}/profile/${userDetails.userId}/changePassword`,
         {
           currentPassword: userPassword.currentPassword,
           newPassword: userPassword.newPassword,

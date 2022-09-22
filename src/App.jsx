@@ -37,7 +37,7 @@ function App() {
 
     
             //cart with items
-            const userBaseURL = `http://localhost:8000/api/v1/users/${userId}/cart`;
+            const userBaseURL = `${process.env.USER_BASE_URL}/${userId}/cart`;
             
             const getCart = async () => {
         

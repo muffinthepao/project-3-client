@@ -39,7 +39,7 @@ import RegisterImg from "./refreshing_ncum.svg";
         console.log("data: ", data);
         
         try {
-            let response =  await axios.post(`http://localhost:8000/api/v1/users/auth/register`, data)
+            let response =  await axios.post(`${process.env.USER_BASE_URL}/auth/register`, data)
 
             if(response.error) {
                 toast.error(response.error)

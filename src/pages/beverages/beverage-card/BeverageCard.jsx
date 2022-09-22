@@ -14,7 +14,7 @@ function BeverageCard({data, setUserCart, setTotalItemsTotal}) {
 
     const addToCart = () => {
         const userData = JSON.parse(localStorage.getItem("user_data")) 
-        const baseUsersURL = `http://localhost:8000/api/v1/users/${userData.userId}`;
+        const baseUsersURL = `${process.env.USER_BASE_URL}/${userData.userId}`;
         const axiosCall = async () => {
             try {
                 await axios.post(`${baseUsersURL}/cart`, 

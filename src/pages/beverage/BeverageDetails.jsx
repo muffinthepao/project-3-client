@@ -10,7 +10,7 @@ import Col from "react-bootstrap/Col";
 import ImageComponent from "../../components/image-component/ImageComponent";
 
 // const userData = JSON.parse(localStorage.getItem("user_data")) 
-const baseBeveragesURL = "http://localhost:8000/api/v1/beverages";
+const baseBeveragesURL = `${process.env.BEVERAGES_BASE_URL}`;
 
 function BeverageDetails({ setUserCart, setTotalItemsTotal, userData }) {
 
@@ -27,7 +27,7 @@ function BeverageDetails({ setUserCart, setTotalItemsTotal, userData }) {
     }, [beverageId]);
 
     const addToCart = () => {
-        const baseUsersURL = `http://localhost:8000/api/v1/users/${userData.userId}`;
+        const baseUsersURL = `${process.env.USER_BASE_URL}/${userData.userId}`;
 
         const axiosCall = async () => {
             try {
