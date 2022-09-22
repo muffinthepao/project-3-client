@@ -9,8 +9,9 @@ import BeverageDetails from './pages/beverage/BeverageDetails';
 import Cart from './pages/cart/Cart';
 import Header from './components/partials/header';
 import Login from './pages/login/Login';
-import Register from './pages/register/Register';
+import NotFound from "./pages/not-found/NotFound";
 import Profile from './pages/profile/Profile';
+import Register from './pages/register/Register';
 // import SavedListings from './pages/profile/SavedListings';
 // import OrderHistory from './pages/profile/OrderHistory';
 
@@ -82,7 +83,7 @@ function App() {
                     <Route path="/users/auth/register" element={<Register />} />
                     <Route path="/users/profile/:userId" element={<Profile />} />
                     <Route path="/users/:userId/cart" element={<Cart isFetchingCart={isFetchingCart} userCart={userCart} cartTotalPrice={cartTotalPrice} totalItemsInCart={totalItemsInCart} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal} setCartTotalPrice={setCartTotalPrice}/>} />
-                    {/* <Route path= "*" element={<ErrorPage />}/> */}
+                    <Route path= "*" element={<NotFound />}/>
                     {/* <Route path="/users/savedListings/:userId" element={<SavedListings />} />
                     <Route path="/users/orderHistory/:userId" element={<OrderHistory />} /> */}
                 </Routes>
