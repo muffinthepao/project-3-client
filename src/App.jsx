@@ -4,18 +4,19 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "./App.css";
 
-import Beverages from "./pages/beverages/Beverages";
-import BeverageDetails from "./pages/beverage/BeverageDetails";
-import Cart from "./pages/cart/Cart";
-import Header from "./components/partials/header";
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
-import Profile from "./pages/profile/Profile";
+import Beverages from './pages/beverages/Beverages';
+import BeverageDetails from './pages/beverage/BeverageDetails';
+import Cart from './pages/cart/Cart';
+import Header from './components/partials/header';
+import Login from './pages/login/Login';
+import Register from './pages/register/Register';
+import Profile from './pages/profile/Profile';
+// import SavedListings from './pages/profile/SavedListings';
+// import OrderHistory from './pages/profile/OrderHistory';
 
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap/dist/js/bootstrap.bundle.min";
-import "react-toastify/dist/ReactToastify.css";
-import { ShoppingCartProvider } from "./context/ShoppingCartContext";
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
 
@@ -70,7 +71,7 @@ function App() {
     console.log(userCart)
     return (
         <div className="App">
-            <ShoppingCartProvider>
+            
                 <Header totalItemsInCart={totalItemsInCart}/>
 
                 <Routes>
@@ -81,10 +82,13 @@ function App() {
                     <Route path="/users/auth/register" element={<Register />} />
                     <Route path="/users/profile/:userId" element={<Profile />} />
                     <Route path="/users/:userId/cart" element={<Cart isFetchingCart={isFetchingCart} userCart={userCart} cartTotalPrice={cartTotalPrice} totalItemsInCart={totalItemsInCart} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal} setCartTotalPrice={setCartTotalPrice}/>} />
+                    {/* <Route path= "*" element={<ErrorPage />}/> */}
+                    {/* <Route path="/users/savedListings/:userId" element={<SavedListings />} />
+                    <Route path="/users/orderHistory/:userId" element={<OrderHistory />} /> */}
                 </Routes>
 
                 <ToastContainer />
-            </ShoppingCartProvider>
+           
         </div>
     );
 }

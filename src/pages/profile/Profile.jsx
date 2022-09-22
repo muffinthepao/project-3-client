@@ -98,7 +98,7 @@ function Profile() {
       <div className="container my-5">
         <div className="row">
         <SideBar />
-          <div className="col-2"></div>
+          <div className="col-1"></div>
 
           {/* --------------------User Details-------------------- */}
           <div className="col-4">
