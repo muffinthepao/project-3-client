@@ -154,7 +154,7 @@ function Profile({setUserData}) {
                 </div>
 
                 <div className="d-grid gap-2">
-                  <button type="submit" className="btn btn-danger">
+                  <button type="submit" className="btn btn-outline-primary">
                     Update profile
                   </button>
                 </div>
@@ -218,7 +218,7 @@ function Profile({setUserData}) {
                   </p>
                 </div>
                 <div className="d-grid gap-2">
-                  <button type="submit" className="btn btn-danger">
+                  <button type="submit" className="btn btn-outline-primary">
                     Change Password
                   </button>
                 </div>
