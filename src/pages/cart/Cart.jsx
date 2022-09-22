@@ -45,7 +45,7 @@ function Cart({
     }
 
     const onCheckout = () => {
-        const baseUsersURL = `${process.env.USER_BASE_URL}/${userData.userId}`;
+        const baseUsersURL = `${process.env.REACT_APP_USER_BASE_URL}/${userData.userId}`;
 
         const axiosCall = async () => {
             try {
@@ -134,13 +134,23 @@ function Cart({
                                         </li>
                                     </ul>
 
+                                    {totalItemsInCart ? (
                                     <button
                                         onClick={onCheckout}
                                         type="button"
                                         className="btn btn-primary btn-lg btn-block w-100"
                                     >
                                         Go to checkout
-                                    </button>
+                                        </button>
+
+                                    ) : (
+                                        <button
+                                        type="button"
+                                        className="btn btn-primary btn-lg btn-block w-100" disabled
+                                    >
+                                        Go to checkout
+                                        </button>
+                                    )}
                                 </div>
                             </div>
                         </div>

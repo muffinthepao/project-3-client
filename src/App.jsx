@@ -37,7 +37,7 @@ function App() {
 
     
             //cart with items
-            const userBaseURL = `${process.env.USER_BASE_URL}/${userId}/cart`;
+            const userBaseURL = `${process.env.REACT_APP_USER_BASE_URL}/${userId}/cart`;
             
             const getCart = async () => {
         
@@ -73,8 +73,8 @@ function App() {
 
                 <Routes>
                     <Route path="/" />
-                    <Route path="/beverages" element={<Beverages setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
-                    <Route path="/beverages/:beverageId"element={<BeverageDetails userData={userData} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal}/>} />
+                    <Route path="/beverages" element={<Beverages setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal} setCartTotalPrice={setCartTotalPrice}/>} />
+                    <Route path="/beverages/:beverageId"element={<BeverageDetails userData={userData} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal} setCartTotalPrice={setCartTotalPrice}/>} />
                     <Route path="/users/auth/login" element={<Login setUserData={setUserData}/>} />
                     <Route path="/users/auth/register" element={<Register />} />
                     <Route path="/users/profile/:userId" element={<Profile setUserData={setUserData} />} />

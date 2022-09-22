@@ -8,13 +8,13 @@ import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import ImageComponent from "../../../components/image-component/ImageComponent";
 import styles from './beverage-card.module.scss';
 
-function BeverageCard({data, setUserCart, setTotalItemsTotal}) {
+function BeverageCard({data, setUserCart, setTotalItemsTotal, setCartTotalPrice}) {
     //destructurting
     const { _id, name, price, spec, img } = data;
 
     const addToCart = () => {
         const userData = JSON.parse(localStorage.getItem("user_data")) 
-        const baseUsersURL = `${process.env.USER_BASE_URL}/${userData.userId}`;
+        const baseUsersURL = `${process.env.REACT_APP_USER_BASE_URL}/${userData.userId}`;
         const axiosCall = async () => {
             try {
                 await axios.post(`${baseUsersURL}/cart`, 
@@ -25,9 +25,11 @@ function BeverageCard({data, setUserCart, setTotalItemsTotal}) {
 
                 const getUpdatedCart = await axios.get(`${baseUsersURL}/cart`)
                 const totalItemsInCart = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
-                
+                const cartSum = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
+
                 setUserCart(getUpdatedCart.data)
                 setTotalItemsTotal(totalItemsInCart)
+                setCartTotalPrice(cartSum)
             } catch (error) {
                 console.log(error)
                 return

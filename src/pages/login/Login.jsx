@@ -23,8 +23,8 @@ function Login({setUserData}) {
             // email: "",
             // password: "",
 
-            email: "drink@gmail.com",
-            password: "1111"
+            email: "mervin1@gmail.com",
+            password: "1234"
         },
     });
 
@@ -32,7 +32,7 @@ function Login({setUserData}) {
         console.log("data: ", data);
 
         try {
-            let response =  await axios.post(`${process.env.USER_BASE_URL}/auth/login`, data)
+            let response =  await axios.post(`${process.env.REACT_APP_USER_BASE_URL}/auth/login`, data)
 
             if(response.error) {
                 toast.error(response.error)

@@ -14,7 +14,7 @@ function LineItemCard({lineItem, setUserCart, setTotalItemsTotal, setCartTotalPr
     console.log("quantity:", quantity)
     
     const userData = JSON.parse(localStorage.getItem("user_data")) 
-    const baseUsersURL = `${process.env.USER_BASE_URL}/${userData.userId}`;
+    const baseUsersURL = `${process.env.REACT_APP_USER_BASE_URL}/${userData.userId}`;
 
     const removeFromCart = () => {
         const axiosCall = async () => {
@@ -66,22 +66,26 @@ function LineItemCard({lineItem, setUserCart, setTotalItemsTotal, setCartTotalPr
 
     const decreaseQuantity = () => {
         const axiosCall = async () => {
-            try {
-                await axios.patch(`${baseUsersURL}/cart/lineItem/${lineItem._id}`, {
-                    quantity: quantity - 1
-                })
-
-                const getUpdatedCart = await axios.get(`${baseUsersURL}/cart`)
-                const totalItemsInCart = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
-                const cartSum = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
-
-                setUserCart(getUpdatedCart.data)
-                setTotalItemsTotal(totalItemsInCart)
-                setCartTotalPrice(cartSum)
-
-            } catch (error) {
-                console.log(error)
-                return
+            if(quantity !== 1) {
+                try {
+                    await axios.patch(`${baseUsersURL}/cart/lineItem/${lineItem._id}`, {
+                        quantity: quantity - 1
+                    })
+    
+                    const getUpdatedCart = await axios.get(`${baseUsersURL}/cart`)
+                    const totalItemsInCart = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity), 0)
+                    const cartSum = getUpdatedCart.data.lineItems.reduce((previousValue, currentValue) => previousValue + (currentValue.quantity * currentValue.product.price), 0)
+    
+                    setUserCart(getUpdatedCart.data)
+                    setTotalItemsTotal(totalItemsInCart)
+                    setCartTotalPrice(cartSum)
+    
+                } catch (error) {
+                    console.log(error)
+                    return
+                }
+            } else {
+                removeFromCart()
             }
         }
 
@@ -147,6 +151,15 @@ function LineItemCard({lineItem, setUserCart, setTotalItemsTotal, setCartTotalPr
                             <FontAwesomeIcon
                                 icon={icon({ name: "minus", style: "solid" })}
                             />
+                            {/* {quantity === 1 ? (
+                                <FontAwesomeIcon
+                                    icon={icon({ name: "minus", style: "solid" })}
+                                />
+                            ) : (
+                                <FontAwesomeIcon
+                                    icon={icon({ name: "trash", style: "solid" })}
+                                />
+                            )} */}
                         </button>
 
                         <div className="form-outline my-auto">
