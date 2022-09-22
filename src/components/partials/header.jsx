@@ -8,7 +8,7 @@ import styles from './header.module.scss'
 // import Logout from "../logout/Logout";
 
 
-function Header({totalItemsInCart, userData}) {
+function Header({totalItemsInCart, setTotalItemsTotal, userData, setUserData}) {
     console.log("header userData", userData)
     const navigate = useNavigate()
 
@@ -22,6 +22,8 @@ function Header({totalItemsInCart, userData}) {
     function Logout() {
 
         localStorage.clear()
+        setTotalItemsTotal(0)
+        setUserData({})
         navigate('/beverages')
         toast.success("Logout Successful!")
         console.log("wow")

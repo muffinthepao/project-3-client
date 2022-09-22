@@ -69,7 +69,7 @@ function App() {
     return (
         <div className="App">
             
-                <Header totalItemsInCart={totalItemsInCart} userData={userData}/>
+                <Header setTotalItemsTotal={setTotalItemsTotal} totalItemsInCart={totalItemsInCart} userData={userData} setUserData={setUserData}/>
 
                 <Routes>
                     <Route path="/" />
