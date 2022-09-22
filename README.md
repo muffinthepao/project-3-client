@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# Quench E-commerce (client)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Technologies used:
 
-## Available Scripts
+![alt-text](https://miro.medium.com/proxy/0*hU4zJiyVwWcM0L-w.png)
 
-In the project directory, you can run:
+This group project consist of 2 repositiories, the client(Frontend) and server(Backend) and the Technologies comprises of the MERN stack: Mongoose, Express, React and NodeJS. This is the client repository. For more information on the server repository, click [here](https://github.com/muffinthepao/quench-server)!
 
-### `npm start`
+## Project concept:
+The idea for this project was to create an E-commerce website for the purchase and sales of beverages, where the owner of the website is the bulk supplier of different types of beverages and buyers are able to purchase them. 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Approach taken:
+Due to working in a team of 3 members for this group project, some form of coordination is required. Trello, a project tracker app, was used to assist the team in organizing our project workflow and task delegation.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Miro, a whiteboarding platform, was used to help the team in visualizing how the website should look like by creating the wireframe during the project consultation phase and also as a reference point throughout the duration of the project.
 
-### `npm test`
+![alt-text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS97gxjjrCUUFLAXGfLDD4tfArCwMjwsyof77meD0_xuAX_RInojSD_0FvRtmsl5Qz3gA&usqp=CAU)
+![alt-text](./public/trelloSS.png)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![alt-text](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxv9n1-_X-r8QMmj84GqnqFXYEIdIwlsoAbckStpvT59GgUch-9wS7vK3QoHt4uyv9ctA&usqp=CAU)
+![alt-text](./public/miroSS.png)
 
-### `npm run build`
+Frequent Stand-ups were also organized to keep track of the project progess, discussion on what have been done by each members and to solve any issues faced by any team members.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The main objective of completing the project was to first determine and meet the Minimum Viable Product (MVP) requirements set for this project. Further improvements to the website will only be worked on after achieving a proper working app with its bugs / issues solved. The MVPs are:
++ working full-stack app using MERN stack
++ adhere to MVC file structure for server repository and conventional components and pages file structure for client repository
++ at least one model with full CRUD
++ include two features requirement (Authorization, Two models and Related models acheived)
++ Be deployed online and accessible to the public. Click [here](heroku link here...) to access!
++ usage of daily tracker (Trello, Miro)
++ Readme.md file present in both repositories
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Future improvements (Stretch goals):
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+![alt-text](./public/beveragesSS.png)
+![alt-text](./public/bevdetailsSS.png)
 
-### `npm run eject`
+Though the website was completed with minimum viable product achieved, the following unsolved problems and will be worked on as future stretch goals:
++ implementation of admin users
++ create, update and delete beverage items as admin
++ saved listings page for users
++ order history page for users
++ authmiddleware for both client and server
++ more user friendly addToCart and UpdateCart functions
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
