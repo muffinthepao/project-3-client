@@ -25,8 +25,13 @@ function Login(props) {
             // email: "",
             // password: "",
 
+<<<<<<< HEAD
             email: "drink@gmail.com",
             password: "1111"
+=======
+            email: "mervin1@gmail.com",
+            password: "1234"
+>>>>>>> 12ad5fa1a3f6ff6f00c50511e520c56ec6b2d60d
         },
     });
 
