@@ -5,8 +5,7 @@ import BeverageCard from "./beverage-card/BeverageCard";
 import BeverageCardPlaceHolder from "./beverage-card/BeverageCardPlaceholder";
 import styles from './beverage-card/beverage-card.module.scss'
 
-// const baseURL = `${process.env.REACT_APP_BASE_URL}/api/v1/beverages`;
-const baseURL = `https://quench-server.herokuapp.com/api/v1/beverages`;
+const baseURL = process.env.REACT_APP_BEVERAGES_BASE_URL;
 
 function Beverages({lineItems, setUserCart, setTotalItemsTotal, setCartTotalPrice}) {
     const [beverages, setBeverages] = useState([]);
