@@ -6,11 +6,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 import ImageComponent from "../../../components/image-component/ImageComponent";
+import { useShoppingCart } from "../../../context/ShoppingCartContext";
 import styles from './beverage-card.module.scss';
 
-function BeverageCard({data, setUserCart, setTotalItemsTotal, setCartTotalPrice}) {
+function BeverageCard({ beverage }) {
     //destructurting
-    const { _id, name, price, spec, img } = data;
+    const { _id, name, price, spec, img } = beverage;
+    const { setUserCart, setTotalItemsTotal, setCartTotalPrice } = useShoppingCart()
 
     const addToCart = () => {
         const userData = JSON.parse(localStorage.getItem("user_data")) 
@@ -44,7 +46,7 @@ function BeverageCard({data, setUserCart, setTotalItemsTotal, setCartTotalPrice}
         <div className="d-grid gap-3">
             <div className={styles['child']}>
                 <div className="p-2 bg-light border">
-                    {data ? (
+                    {beverage ? (
                         
                             <Card style={{ width: "18rem", height: "600px" }}>
                                 <Link to={`/beverages/${_id}`}>

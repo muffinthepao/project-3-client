@@ -9,9 +9,12 @@ import { schema } from './login.validation'
 import ImageComponent from "../../components/image-component/ImageComponent";
 import loginImg from "./refreshing_beverage_td3r.svg";
 import styles from '../../components/stylesheets/form.module.scss'
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
-function Login({setUserData}) {
+function Login() {
     const navigate = useNavigate();
+    const { setUserData } = useShoppingCart()
+
     const {
         register,
         handleSubmit,
@@ -23,7 +26,7 @@ function Login({setUserData}) {
             // email: "",
             // password: "",
 
-            email: "mervin1@gmail.com",
+            email: "mervin5@gmail.com",
             password: "1234"
         },
     });

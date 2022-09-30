@@ -4,9 +4,10 @@ import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { Link } from "react-router-dom";
 
 import ImageComponent from "../image-component/ImageComponent";
-// import Counter from "../order-counter/Counter";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
-function LineItemCard({lineItem, setUserCart, setTotalItemsTotal, setCartTotalPrice}) {
+function LineItemCard() {
+    const {lineItem, setUserCart, setTotalItemsTotal, setCartTotalPrice} = useShoppingCart()
     
     // destructurting
     const { _id, name, price, spec, img } = lineItem.product;

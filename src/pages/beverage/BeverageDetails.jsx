@@ -8,11 +8,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import ImageComponent from "../../components/image-component/ImageComponent";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
 // const userData = JSON.parse(localStorage.getItem("user_data")) 
 const baseBeveragesURL = `${process.env.REACT_APP_BEVERAGES_BASE_URL}`;
 
-function BeverageDetails({ userData, setUserCart, setTotalItemsTotal, setCartTotalPrice }) {
+function BeverageDetails() {
+    const { userData, setUserCart, setTotalItemsTotal, setCartTotalPrice } = useShoppingCart()
 
     const { beverageId } = useParams();
     const [beverage, setBeverage] = useState(null);

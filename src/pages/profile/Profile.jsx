@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react"
 import axios from "axios" // send data to server
 import { toast } from "react-toastify" // pop-up message success/failure ...
-
 import { useNavigate } from "react-router-dom"
+
 import styles from "../../components/stylesheets/form.module.scss"
 import SideBar from '../../components/side-bar/SideBar'
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
-function Profile({setUserData}) {
+function Profile() {
+  const { setUserData } = useShoppingCart()
 
   // userdata from local storage
   const userData = JSON.parse(localStorage.getItem("user_data")) // converts string of user_data into a constructed object
