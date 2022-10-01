@@ -6,8 +6,10 @@ import { Link } from "react-router-dom";
 import ImageComponent from "../image-component/ImageComponent";
 import { useShoppingCart } from "../../context/ShoppingCartContext";
 
-function LineItemCard() {
-    const {lineItem, setUserCart, setTotalItemsTotal, setCartTotalPrice} = useShoppingCart()
+function LineItemCard({lineItem}) {
+
+    //just receive props as it's a dumb component
+    const { setUserCart, setTotalItemsTotal, setCartTotalPrice} = useShoppingCart()
     
     // destructurting
     const { _id, name, price, spec, img } = lineItem.product;
@@ -17,6 +19,7 @@ function LineItemCard() {
     const userData = JSON.parse(localStorage.getItem("user_data")) 
     const baseUsersURL = `${process.env.REACT_APP_USER_BASE_URL}/${userData.userId}`;
 
+    // since CartLineItems is a dumb component, put this in Cart.jsx
     const removeFromCart = () => {
         const axiosCall = async () => {
             try {
@@ -41,6 +44,7 @@ function LineItemCard() {
 
     }
 
+    // since CartLineItems is a dumb component, put this in Cart.jsx
     const increaseQuantity = () => {
         const axiosCall = async () => {
             try {

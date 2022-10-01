@@ -19,9 +19,6 @@ function Cart() {
                 <LineItemCard
                     key={lineItem._id}
                     lineItem={lineItem}
-                    setUserCart={setUserCart}
-                    setTotalItemsTotal={setTotalItemsTotal}
-                    setCartTotalPrice={setCartTotalPrice}
                 />
             ));
 
