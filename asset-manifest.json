@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/quench-client/static/css/main.10da13c7.css",
-    "main.js": "/quench-client/static/js/main.ac128986.js",
-    "static/media/refreshing_ncum.svg": "/quench-client/static/media/refreshing_ncum.68540be63df47d701ec97acb2ffb6abe.svg",
-    "static/media/notFound.png": "/quench-client/static/media/notFound.4aa1999b07d7ddf2e2bd.png",
-    "static/media/empty-cart.png": "/quench-client/static/media/empty-cart.3fb2f85a27ef1e5245ad.png",
-    "static/media/refreshing_beverage_td3r.svg": "/quench-client/static/media/refreshing_beverage_td3r.12a601136733850ca70bd031efb17bf2.svg",
-    "index.html": "/quench-client/index.html",
-    "main.10da13c7.css.map": "/quench-client/static/css/main.10da13c7.css.map",
-    "main.ac128986.js.map": "/quench-client/static/js/main.ac128986.js.map"
+    "main.css": "/static/css/main.10da13c7.css",
+    "main.js": "/static/js/main.500ee86e.js",
+    "static/media/refreshing_ncum.svg": "/static/media/refreshing_ncum.68540be63df47d701ec97acb2ffb6abe.svg",
+    "static/media/notFound.png": "/static/media/notFound.4aa1999b07d7ddf2e2bd.png",
+    "static/media/empty-cart.png": "/static/media/empty-cart.3fb2f85a27ef1e5245ad.png",
+    "static/media/refreshing_beverage_td3r.svg": "/static/media/refreshing_beverage_td3r.12a601136733850ca70bd031efb17bf2.svg",
+    "index.html": "/index.html",
+    "main.10da13c7.css.map": "/static/css/main.10da13c7.css.map",
+    "main.500ee86e.js.map": "/static/js/main.500ee86e.js.map"
   },
   "entrypoints": [
     "static/css/main.10da13c7.css",
-    "static/js/main.ac128986.js"
+    "static/js/main.500ee86e.js"
   ]
 }
