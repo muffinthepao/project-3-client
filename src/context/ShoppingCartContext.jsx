@@ -13,7 +13,7 @@ export function useShoppingCart() {
 }
 
 export function ShoppingCartProvider({ children }) {
-    //what info i wanna make available
+    //what info i want to make available throughout the app
     const [userData, setUserData] = useState({})
     const [isFetchingCart, setFetchingCart] = useState(true)
     const [userCart, setUserCart] = useState({})
@@ -22,13 +22,13 @@ export function ShoppingCartProvider({ children }) {
 
     //is user loggedin?
     const userLoggedIn = localStorage.getItem("user_token")
-
+    
     useEffect(() => {
+
         if (userLoggedIn) {
             
             let userId = userData.userId
 
-    
             //cart with items
             const userBaseURL = `${process.env.REACT_APP_USER_BASE_URL}/${userId}/cart`;
             
@@ -55,7 +55,7 @@ export function ShoppingCartProvider({ children }) {
     
            getCart().catch(console.error);
         }
-
+    // eslint-disable-next-line
     },[userLoggedIn]);
 
     //total items in cart

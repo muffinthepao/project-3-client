@@ -9,7 +9,7 @@ import { useShoppingCart } from "../../context/ShoppingCartContext"
 
 
 function Cart() {
-    const { isFetchingCart, userCart, cartTotalPrice, totalItemsInCart, setUserCart, setTotalItemsTotal, setCartTotalPrice } = useShoppingCart()
+    const { isFetchingCart, userCart, cartTotalPrice, totalItemsInCart, setUserCart, setTotalItemsTotal } = useShoppingCart()
     const navigate = useNavigate();
     const userData = JSON.parse(localStorage.getItem("user_data"));
 
