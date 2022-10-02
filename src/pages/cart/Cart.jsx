@@ -5,17 +5,11 @@ import { useNavigate } from "react-router-dom";
 
 import LineItemCard from "../../components/cart-line-items/CartLineItems";
 import emptyCartImage from "../cart/empty-cart.png";
+import { useShoppingCart } from "../../context/ShoppingCartContext"
 
 
-function Cart({
-    isFetchingCart,
-    userCart,
-    cartTotalPrice,
-    totalItemsInCart,
-    setUserCart,
-    setTotalItemsTotal,
-    setCartTotalPrice
-}) {
+function Cart() {
+    const { isFetchingCart, userCart, cartTotalPrice, totalItemsInCart, setUserCart, setTotalItemsTotal } = useShoppingCart()
     const navigate = useNavigate();
     const userData = JSON.parse(localStorage.getItem("user_data"));
 
@@ -25,9 +19,6 @@ function Cart({
                 <LineItemCard
                     key={lineItem._id}
                     lineItem={lineItem}
-                    setUserCart={setUserCart}
-                    setTotalItemsTotal={setTotalItemsTotal}
-                    setCartTotalPrice={setCartTotalPrice}
                 />
             ));
 

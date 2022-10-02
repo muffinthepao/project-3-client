@@ -4,9 +4,12 @@ import { icon } from '@fortawesome/fontawesome-svg-core/import.macro'
 import { Link } from "react-router-dom";
 
 import ImageComponent from "../image-component/ImageComponent";
-// import Counter from "../order-counter/Counter";
+import { useShoppingCart } from "../../context/ShoppingCartContext";
 
-function LineItemCard({lineItem, setUserCart, setTotalItemsTotal, setCartTotalPrice}) {
+function LineItemCard({lineItem}) {
+
+    //just receive props as it's a dumb component
+    const { setUserCart, setTotalItemsTotal, setCartTotalPrice} = useShoppingCart()
     
     // destructurting
     const { _id, name, price, spec, img } = lineItem.product;
@@ -16,6 +19,7 @@ function LineItemCard({lineItem, setUserCart, setTotalItemsTotal, setCartTotalPr
     const userData = JSON.parse(localStorage.getItem("user_data")) 
     const baseUsersURL = `${process.env.REACT_APP_USER_BASE_URL}/${userData.userId}`;
 
+    // since CartLineItems is a dumb component, put this in Cart.jsx
     const removeFromCart = () => {
         const axiosCall = async () => {
             try {
@@ -40,6 +44,7 @@ function LineItemCard({lineItem, setUserCart, setTotalItemsTotal, setCartTotalPr
 
     }
 
+    // since CartLineItems is a dumb component, put this in Cart.jsx
     const increaseQuantity = () => {
         const axiosCall = async () => {
             try {

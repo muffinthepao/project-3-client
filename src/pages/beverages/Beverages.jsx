@@ -7,7 +7,7 @@ import styles from './beverage-card/beverage-card.module.scss'
 
 const baseURL = process.env.REACT_APP_BEVERAGES_BASE_URL;
 
-function Beverages({lineItems, setUserCart, setTotalItemsTotal, setCartTotalPrice}) {
+function Beverages() {
     const [beverages, setBeverages] = useState([]);
     
     useEffect(() => {
@@ -19,7 +19,7 @@ function Beverages({lineItems, setUserCart, setTotalItemsTotal, setCartTotalPric
     }, []);
 
     const beverageCards = beverages.map((beverage) => (
-        <BeverageCard key={beverage._id} data={beverage} lineItems={lineItems} setUserCart={setUserCart} setTotalItemsTotal={setTotalItemsTotal} setCartTotalPrice={setCartTotalPrice}/>
+        <BeverageCard key={beverage._id} beverage={beverage} />
     ));
 
     console.log(beverages)
